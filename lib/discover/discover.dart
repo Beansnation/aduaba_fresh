@@ -133,13 +133,13 @@ class _DiscoverState extends State<Discover> {
           buildNavBar(Icons.home_outlined, 0,
               padding: EdgeInsets.only(left: 80.0), ontap: () {
                 _selectedIndex = 0;
-            Navigator.pushReplacement(
+            Navigator.push(
                 context, MaterialPageRoute(builder: (context) => Home()));
           }),
           GestureDetector(
               child: buildNavBar(Icons.search, 1),
               onTap: () {
-                Navigator.pushReplacement(context,
+                Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Discover()));
               }),
           buildNavBar(Icons.more_horiz, 2,
@@ -167,7 +167,7 @@ class _DiscoverState extends State<Discover> {
 
   Widget buildCard(int num, bool isFavorite) {
     return GestureDetector(
-      onTap: ()=>Navigator.pushReplacement(
+      onTap: ()=>Navigator.push(
           context, MaterialPageRoute(builder: (context) => ProductDetail())) ,
       child: Container(
           margin: EdgeInsets.only(right: 16.0),

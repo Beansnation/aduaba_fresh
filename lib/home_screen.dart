@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
                         size: 30),
                     color: white,
                     onPressed: () {
-                      Navigator.pushReplacement(context,
+                      Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Cart()));
                     },
                   ),
@@ -58,7 +58,7 @@ class _HomeState extends State<Home> {
             ontap: () {
               setState(() {
                 _selectedIndex = 0;
-                Navigator.pushReplacement(
+                Navigator.push(
                     context, MaterialPageRoute(builder: (context) => Home()));
               });
             },
@@ -69,7 +69,7 @@ class _HomeState extends State<Home> {
             ontap: () {
               setState(() {
                 _selectedIndex = 1;
-                Navigator.pushReplacement(context,
+                Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Discover()));
               });
             },
@@ -102,7 +102,7 @@ class _HomeState extends State<Home> {
               GestureDetector(
                 child: buildRow("Categories"),
                 onTap: () {
-                  Navigator.pushReplacement(
+                  Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => CategoriesPage()));

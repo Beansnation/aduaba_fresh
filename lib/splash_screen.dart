@@ -37,7 +37,7 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     Future.delayed(
         Duration(seconds: 6),
-        () => Navigator.pushReplacement(
+        () => Navigator.push(
             context, MaterialPageRoute(builder: (context) => OnBoardingPage())));
     return Scaffold(
         body: FadeTransition(
