@@ -122,6 +122,8 @@ class _CategoriesGridState extends State<CategoriesGrid> {
                 Size.fromHeight(MediaQuery.of(context).size.width / 2.5),
             child: tab),
         body: ListView(
+
+
           padding: const EdgeInsets.only(left: 16.0, top: 16, bottom: 16),
           children: [
             new GridView.count(
