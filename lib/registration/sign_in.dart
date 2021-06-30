@@ -1,7 +1,7 @@
 import 'package:aduaba_fresh/registration/sign_in_forgot_password.dart';
 import 'package:aduaba_fresh/registration/sign_up.dart';
 import 'package:flutter/material.dart';
-import '../style_refactor.dart';
+import '../model/style_refactor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aduaba_fresh/home_screen.dart';
 

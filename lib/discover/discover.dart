@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'style_refactor.dart';
-import 'cart_screen.dart';
+import '../model/style_refactor.dart';
+import '../cart/cart_screen.dart';
 import 'search.dart';
-import 'home_screen.dart';
+import '../home_screen.dart';
 import 'product_detail.dart';
 
 class Discover extends StatefulWidget {

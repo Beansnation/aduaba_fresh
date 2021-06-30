@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'style_refactor.dart';
-import 'cart_screen.dart';
+import 'model/style_refactor.dart';
+import 'cart/cart_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CategoriesGrid extends StatefulWidget {
