@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../style_refactor.dart';
+import '../model/style_refactor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ForgotPassword extends StatefulWidget {

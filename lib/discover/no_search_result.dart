@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'style_refactor.dart';
+import '../model/style_refactor.dart';
 
 class NullSearch extends StatefulWidget {
   @override

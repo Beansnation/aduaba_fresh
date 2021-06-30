@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'style_refactor.dart';
-import 'cart_screen.dart';
+import 'model/style_refactor.dart';
+import 'cart/cart_screen.dart';
 import 'screens/drawer-menu.dart';
 import 'screens/categories_page.dart';
-import 'discover.dart';
+import 'discover/discover.dart';
 
 class Home extends StatefulWidget {
   @override
