@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'registration/sign_up.dart';
 import 'package:flutter/animation.dart';
-import 'screens/onboarding_page.dart';
+import 'screens/onboarding.dart';
 
 class Splash extends StatefulWidget {
   @override

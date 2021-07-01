@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../model/style_refactor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:aduaba_fresh/home_screen.dart';
+import 'package:aduaba_fresh/discover/discover.dart';
 
 class EmptyCart extends StatefulWidget {
   @override
@@ -8,6 +10,7 @@ class EmptyCart extends StatefulWidget {
 }
 
 class _EmptyCartState extends State<EmptyCart> {
+  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     final tab = Container(
@@ -67,6 +70,33 @@ class _EmptyCartState extends State<EmptyCart> {
           preferredSize:
               Size.fromHeight(MediaQuery.of(context).size.width / 3.2),
           child: tab),
+      bottomNavigationBar: Row(children: [
+        buildNavBar(
+          Icons.home_outlined,
+          0,
+          padding: EdgeInsets.only(left: 80.0),
+          ontap: () {
+            setState(() {
+              _selectedIndex = 0;
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Home()));
+            });
+          },
+        ),
+        buildNavBar(
+          Icons.search,
+          1,
+          ontap: () {
+            setState(() {
+              _selectedIndex = 1;
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Discover()));
+            });
+          },
+        ),
+        buildNavBar(Icons.more_horiz, 2,
+            padding: EdgeInsets.only(right: 80.0)),
+      ]),
       body: SafeArea(
         child: Stack(
           children: [
@@ -98,6 +128,27 @@ class _EmptyCartState extends State<EmptyCart> {
                 child: BottomFloat()),
           ],
         ),
+      ),
+    );
+  }
+  Widget buildNavBar(IconData icon, int index,
+      {EdgeInsetsGeometry? padding, ontap}) {
+    return GestureDetector(
+      onTap: ontap,
+      child: Container(
+        padding: padding,
+        height: 80,
+        width: MediaQuery.of(context).size.width / 3,
+        decoration: BoxDecoration(boxShadow: [
+          BoxShadow(
+              color: white,
+              spreadRadius: 2,
+              blurRadius: 20,
+              offset: Offset(2, 0))
+        ]),
+        child: Icon(icon,
+            size: 32,
+            color: index == _selectedIndex ? primaryGreen : hintTextColor),
       ),
     );
   }

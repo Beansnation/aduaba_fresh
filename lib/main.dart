@@ -2,7 +2,9 @@ import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'package:flutter/material.dart';
 import 'package:aduaba_fresh/splash_screen.dart';
 import 'categories_grid.dart';
-import 'checkout/checkout_summary.dart';
+import 'package:aduaba_fresh/screens/onboarding.dart';
+import 'checkout/checkout_payment_card.dart';
+import 'checkout/checkout_address.dart';
 import 'cart/cart_screen.dart';
 import 'cart/empty_cart.dart';
 import 'package:aduaba_fresh/registration/sign_in.dart';
@@ -13,12 +15,11 @@ import 'package:aduaba_fresh/screens/drawer-menu.dart';
 import 'package:aduaba_fresh/screens/edit_account.dart';
 import 'package:aduaba_fresh/screens/empty_order.dart';
 import 'package:aduaba_fresh/screens/empty_wishlist_page.dart';
-import 'package:aduaba_fresh/screens/onboarding_page.dart';
+//import 'package:aduaba_fresh/screens/onboarding_page.dart';
 import 'package:aduaba_fresh/screens/order_summary.dart';
 import 'package:aduaba_fresh/screens/orders_page.dart';
 import 'package:aduaba_fresh/screens/payment_page.dart';
 import 'package:aduaba_fresh/screens/raw_food_category_page.dart';
-import 'package:aduaba_fresh/screens/splash_screen.dart';
 import 'package:aduaba_fresh/screens/wishlist_page.dart';
 
 
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
         shadowColor: white,
         fontFamily: 'TTNorms pro',
       ),
-      home: Checkout(),
+      home: OnBoardingPage(),
     );
   }
 }

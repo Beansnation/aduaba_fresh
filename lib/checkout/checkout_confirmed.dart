@@ -42,8 +42,8 @@ class _CheckoutConfirmedState extends State<CheckoutConfirmed> {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Checkout()));
               },
-              child: Icon(FontAwesomeIcons.arrowLeft, color: black)),
-          SizedBox(height: 16),
+              child: Icon(Icons.keyboard_backspace,size: 35, color: black)),
+          SizedBox(height: 10),
           stylus('Checkout', FontWeight.w700, 24, textcolor: greenGrey),
           SizedBox(height: 16),
           Row(
@@ -81,7 +81,7 @@ class _CheckoutConfirmedState extends State<CheckoutConfirmed> {
     return Scaffold(
         appBar: PreferredSize(
             preferredSize:
-                Size.fromHeight(MediaQuery.of(context).size.width / 2),
+                Size.fromHeight(MediaQuery.of(context).size.width / 2.5),
             child: tab),
         body: Padding(
           padding: const EdgeInsets.all(16.0),

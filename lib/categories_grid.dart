@@ -43,7 +43,7 @@ class _CategoriesGridState extends State<CategoriesGrid> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 10,
+            height: 36,
           ),
           Icon(FontAwesomeIcons.arrowLeft, color: black),
           SizedBox(height: 16),

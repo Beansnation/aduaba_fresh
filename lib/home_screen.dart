@@ -13,22 +13,23 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   TextEditingController searchController = TextEditingController();
   int _selectedIndex = 0;
+  var scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    int _selectedIndex = 0;
     return Scaffold(
-        //drawer: DrawerMenu(),
+        key: scaffoldKey,
+        drawer: Drawer(
+          child:
+            DrawerMenu()
+        ),
         appBar: AppBar(
           backgroundColor: Colors.white,
           shadowColor: Colors.transparent,
-          leading: GestureDetector(
-            onTap: () {
-              DrawerMenu();
+          leading: IconButton(
+            icon: ImageIcon(AssetImage('assets/images/menu.png',), size: 30, color: black,),
+            onPressed: () {
+              scaffoldKey.currentState!.openDrawer();
             },
-            child: Image.asset(
-              'assets/images/menu.png',
-              scale: 1.5,
-            ),
           ),
           title: Center(
               child: stylus('Aduaba Fresh', FontWeight.w700, 20,

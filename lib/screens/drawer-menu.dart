@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:aduaba_fresh/model/style_refactor.dart';
 
 class DrawerMenu extends StatefulWidget {
-  const DrawerMenu({Key? key, child}) : super(key: key);
-
   @override
   _DrawerMenuState createState() => _DrawerMenuState();
 }
@@ -10,181 +9,148 @@ class DrawerMenu extends StatefulWidget {
 class _DrawerMenuState extends State<DrawerMenu> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Aduaba Fresh',
-        ),
-      ),
-      drawer: Drawer(
-        child: SafeArea(
-          child: ListView(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0),
-                child: Column(
-                  children: <Widget>[
-                    DrawerHeader(
+    return Stack(
+        clipBehavior: Clip.none, children: [
+      Container(
+        child: ListView(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 80,
+                    child: DrawerHeader(
                       child: Row(
                         children: <Widget>[
                           CircleAvatar(
-                            backgroundImage:
-                                AssetImage('assets/images/OnBoarding3.png'),
-                            radius: 25.0,
+                            backgroundImage: NetworkImage(
+                                'https://i.pinimg.com/originals/39/e9/b3/39e9b39628e745a39f900dc14ee4d9a7.jpg'),
+                            radius: 18.0,
                           ),
                           SizedBox(
                             width: 20.0,
                           ),
-                          Text(
+                          stylus(
                             'Andrea Charles',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20.0,
-                            ),
+                            FontWeight.bold,
+                            18.0,
                           ),
-                          // Divider(
-                          //   thickness: 20,
-                          //   height: 20,
-                          //   color: Colors.red,
-                          // ),
                         ],
                       ),
                     ),
-                    ListTile(
-                      leading: Icon(Icons.shopping_cart),
-                      title: Text('Cart'),
-                      onTap: () {},
-                    ),
-                    ListTile(
-                      leading: Icon(Icons.grid_view_rounded),
-                      title: Text('Categories'),
-                      onTap: () {},
-                    ),
-                    ListTile(
-                      leading: Icon(Icons.favorite),
-                      title: Text('My Wishlist'),
-                      trailing: Padding(
-                        padding: const EdgeInsets.only(left: 18.0),
-                        child: IconButton(
-                          icon: Icon(
-                            Icons.cancel,
-                            size: 55.0,
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        ),
-                      ),
-                      onTap: () {},
-                    ),
-                    ListTile(
-                      leading: Icon(Icons.shopping_cart),
-                      title: Text('Orders'),
-                      onTap: () {},
-                    ),
-                    ListTile(
-                      leading: Icon(Icons.person),
-                      title: Text('Account Details'),
-                      onTap: () {},
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                height: 55,
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade100,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 40.0,
-                    vertical: 18.0,
                   ),
-                  child: Text(
-                    'Support',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      color: Colors.grey.shade500,
-                      fontSize: 18.0,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 50.0,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 40.0,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      'Contact Us',
-                      style: TextStyle(
-                        fontSize: 22.0,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 40.0,
-                    ),
-                    Text(
-                      'Help & FAQs',
-                      style: TextStyle(
-                        fontSize: 22.0,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 80.0,
-              ),
-              Column(
-                children: [
-                  Image(
-                    image: AssetImage('assets/images/AduabaSmallLogo.png'),
-                  ),
-                  SizedBox(
-                    height: 35.0,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Text(
-                        'Privacy Policy',
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          color: Colors.grey.shade500,
-                        ),
-                      ),
-                      Text(
-                        '.',
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          color: Colors.grey.shade500,
-                        ),
-                      ),
-                      Text(
-                        'Terms of Use',
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          color: Colors.grey.shade500,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 18.0,
-                  ),
+                  buildListTile(Icons.shopping_cart, 'Cart', () {}),
+                  buildListTile(Icons.grid_view_rounded, 'Categories', () {}),
+                  buildListTile(Icons.favorite, 'My Wishlist', () {}),
+                  buildListTile(Icons.shopping_cart, 'Orders', () {}),
+                  buildListTile(Icons.person, 'Account Details', () {}),
                 ],
               ),
-            ],
-          ),
+            ),
+            Container(
+              height: 55,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 40.0,
+                  vertical: 15.0,
+                ),
+                child: Text(
+                  'Support',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color: Colors.grey.shade500,
+                    fontSize: 18.0,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 50.0,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 40.0,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  stylus('Contact Us', FontWeight.w400, 19),
+                  SizedBox(
+                    height: 40.0,
+                  ),
+                  stylus('Help & FAQs', FontWeight.w400, 19),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 80.0,
+            ),
+            Column(
+              children: [
+                Image.asset(
+                  'assets/images/AduabaSmallLogo.png',
+                ),
+                SizedBox(
+                  height: 35.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    stylus(
+                      'Privacy Policy',
+                      FontWeight.w400,
+                      16,
+                      textcolor: hintTextColor,
+                    ),
+                    Text(
+                      '.',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.grey.shade500,
+                      ),
+                    ),
+                    stylus(
+                      'Terms of Use',
+                      FontWeight.w400,
+                      16,
+                      textcolor: hintTextColor,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 18.0,
+                ),
+              ],
+            ),
+          ],
         ),
       ),
+      Positioned(
+          top: 240,
+          right: -18,
+          child: IconButton(
+            icon: Icon(
+              Icons.cancel,
+              size: 40.0,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ))
+    ]);
+  }
+
+  ListTile buildListTile(IconData icon, String text, ontap) {
+    return ListTile(
+      leading: Icon(icon, color: greenGrey),
+      title: stylus(text, FontWeight.w400, 18),
+      onTap: () {
+        ontap;
+      },
     );
   }
 }

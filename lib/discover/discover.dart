@@ -1,3 +1,4 @@
+import 'package:aduaba_fresh/categories_grid.dart';
 import 'package:flutter/material.dart';
 import '../model/style_refactor.dart';
 import '../cart/cart_screen.dart';
@@ -100,8 +101,12 @@ class _DiscoverState extends State<Discover> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: stylus('RawFruits', FontWeight.w500, 16,
-                      textcolor: hintTextColor),
+                  child: GestureDetector(
+                    child: stylus('RawFruits', FontWeight.w500, 16,
+                        textcolor: hintTextColor),
+                    onTap: (){Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => CategoriesGrid()));},
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),

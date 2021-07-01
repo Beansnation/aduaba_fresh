@@ -1,9 +1,9 @@
 import 'package:aduaba_fresh/Animation/FadeAnimation.dart';
+import 'package:aduaba_fresh/registration/sign_up.dart';
+import 'package:aduaba_fresh/registration/sign_in.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingPage extends StatefulWidget {
-  const OnBoardingPage({Key? key}) : super(key: key);
-
   @override
   _OnBoardingPageState createState() => _OnBoardingPageState();
 }
@@ -32,6 +32,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   void _next() {
     setState(() {
       if (currentIndex < texts.length - 1) {
+
         currentIndex++;
       } else {
         currentIndex = currentIndex;
@@ -149,7 +150,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                                             color: Colors.green[600],
                                             textColor: Colors.white,
                                             onPressed: () {
-                                              //Navigator.of(context).pushNamed(SignupScreen.routeName);
+                                              Navigator.push(context,
+                                                  MaterialPageRoute(builder: (context) => SignUp()));
                                             },
                                           ),
                                           SizedBox(
@@ -175,7 +177,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                                                   ),
                                                 ),
                                                 onPressed: () {
-                                                  //Navigator.of(context).pushNamed(LoginScreen.routeName);
+                                                  Navigator.push(context,
+                                                      MaterialPageRoute(builder: (context) => SignIn()));
                                                 },
                                               ),
                                             ],
