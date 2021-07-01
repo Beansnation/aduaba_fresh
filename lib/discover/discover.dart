@@ -5,6 +5,7 @@ import '../cart/cart_screen.dart';
 import 'search.dart';
 import '../home_screen.dart';
 import 'product_detail.dart';
+import 'package:aduaba_fresh/screens/drawer-menu.dart';
 
 class Discover extends StatefulWidget {
   @override
@@ -13,6 +14,7 @@ class Discover extends StatefulWidget {
 
 class _DiscoverState extends State<Discover> {
   int _selectedIndex = 1;
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class _DiscoverState extends State<Discover> {
     final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
     final double itemWidth = size.width / 2;
     final tab = Container(
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.only(left:5, right: 16, top: 16, bottom: 16),
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height / 2,
       decoration: BoxDecoration(color: white, boxShadow: [
@@ -47,11 +49,13 @@ class _DiscoverState extends State<Discover> {
             height: 30,
           ),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Row(
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset(
-                  'assets/images/menu.png',
-                  scale: 2,
+                IconButton(
+                  icon: ImageIcon(AssetImage('assets/images/menu.png',), size: 30, color: black,),
+                  onPressed: () {
+                    scaffoldKey.currentState!.openDrawer();
+                  },
                 ),
                 SizedBox(width: 32),
                 stylus('Discover', FontWeight.w700, 24, textcolor: greenGrey),
@@ -130,6 +134,11 @@ class _DiscoverState extends State<Discover> {
       ),
     );
     return Scaffold(
+        key: scaffoldKey,
+        drawer: Drawer(
+            child:
+            DrawerMenu()
+        ),
         appBar: PreferredSize(
             preferredSize:
                 Size.fromHeight(MediaQuery.of(context).size.width / 3.1),

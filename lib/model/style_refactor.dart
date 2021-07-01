@@ -192,7 +192,7 @@ Card buildPromoCard(Color color) {
           ),
         ),
         SizedBox(width: 20),
-        Image.asset('assets/images/basket.png', scale: 4.0)
+        Container(child: Image.asset('assets/images/basket.png', scale: 4.0))
       ],
     ),
   );
