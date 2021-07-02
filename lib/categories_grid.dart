@@ -27,7 +27,7 @@ class _CategoriesGridState extends State<CategoriesGrid> {
       buildCard(3, false),
     ];
     var size = MediaQuery.of(context).size;
-    final double itemHeight = (size.height - kToolbarHeight - 24) / 2.4;
+    final double itemHeight = (size.height - kToolbarHeight - 24) / 2.2;
     final double itemWidth = size.width / 2;
     final tab = Container(
       padding: EdgeInsets.all(16),
@@ -45,8 +45,8 @@ class _CategoriesGridState extends State<CategoriesGrid> {
           SizedBox(
             height: 36,
           ),
-          Icon(FontAwesomeIcons.arrowLeft, color: black),
-          SizedBox(height: 16),
+          Icon(Icons.keyboard_backspace, size: 35, color: black),
+          SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -119,11 +119,9 @@ class _CategoriesGridState extends State<CategoriesGrid> {
     return Scaffold(
         appBar: PreferredSize(
             preferredSize:
-                Size.fromHeight(MediaQuery.of(context).size.width / 2.5),
+                Size.fromHeight(MediaQuery.of(context).size.width / 2.8),
             child: tab),
         body: ListView(
-
-
           padding: const EdgeInsets.only(left: 16.0, top: 16, bottom: 16),
           children: [
             new GridView.count(

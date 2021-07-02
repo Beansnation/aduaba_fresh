@@ -43,8 +43,7 @@ class _CheckoutAddressState extends State<CheckoutAddress> {
           ),
           InkWell(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Checkout()));
+                Navigator.pop(context);
               },
               child: Icon(Icons.keyboard_backspace,size: 35, color: black)),
           SizedBox(height: 16),

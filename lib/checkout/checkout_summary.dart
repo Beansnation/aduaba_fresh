@@ -27,7 +27,9 @@ class _CheckoutState extends State<Checkout> {
           SizedBox(
             height: 40,
           ),
-          Icon(Icons.keyboard_backspace, size: 35, color: black),
+          GestureDetector(
+              onTap: ()=>Navigator.pop(context),
+              child: Icon(Icons.keyboard_backspace, size: 35, color: black)),
           SizedBox(height: 8),
           stylus('Checkout', FontWeight.w700, 24, textcolor: greenGrey),
         ],

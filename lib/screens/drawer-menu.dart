@@ -1,5 +1,9 @@
+import 'package:aduaba_fresh/cart/cart_screen.dart';
+import 'package:aduaba_fresh/screens/wishlist_page.dart';
 import 'package:flutter/material.dart';
 import 'package:aduaba_fresh/model/style_refactor.dart';
+import 'account_page.dart';
+import 'categories_page.dart';
 
 class DrawerMenu extends StatefulWidget {
   @override
@@ -9,8 +13,7 @@ class DrawerMenu extends StatefulWidget {
 class _DrawerMenuState extends State<DrawerMenu> {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-        clipBehavior: Clip.none, children: [
+    return Stack(clipBehavior: Clip.none, children: [
       Container(
         child: ListView(
           children: <Widget>[
@@ -40,11 +43,30 @@ class _DrawerMenuState extends State<DrawerMenu> {
                       ),
                     ),
                   ),
-                  buildListTile(Icons.shopping_cart, 'Cart', () {}),
-                  buildListTile(Icons.grid_view_rounded, 'Categories', () {}),
-                  buildListTile(Icons.favorite, 'My Wishlist', () {}),
-                  buildListTile(Icons.shopping_cart, 'Orders', () {}),
-                  buildListTile(Icons.person, 'Account Details', () {}),
+                  buildListTile(Icons.shopping_cart, 'Cart', () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Cart()));
+                  }),
+                  buildListTile(Icons.grid_view_rounded, 'Categories', () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CategoriesPage()));
+                  }),
+                  buildListTile(Icons.favorite, 'My Wishlist', () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => WishlistPage()));
+                  }),
+                  buildListTile(Icons.shopping_cart, 'Orders', () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Cart()));
+                  }),
+                  buildListTile(Icons.person, 'Account Details', () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => AccountPage()));
+                  }),
                 ],
               ),
             ),

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:aduaba_fresh/model/style_refactor.dart';
+import 'package:aduaba_fresh/cart/cart_screen.dart';
+
+import '../categories_grid.dart';
 
 class CategoriesPage extends StatefulWidget {
   const CategoriesPage({Key? key}) : super(key: key);
@@ -15,9 +19,11 @@ class _CategoriesPageState extends State<CategoriesPage> {
         elevation: 5.0,
         backgroundColor: Colors.white,
         leading: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 18.0),
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             icon: Icon(
               Icons.keyboard_backspace,
               color: Colors.black,
@@ -29,7 +35,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
           preferredSize: const Size.fromHeight(100.0),
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 18.0,
+              horizontal: 16.0,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,21 +43,20 @@ class _CategoriesPageState extends State<CategoriesPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'Categories',
-                      style: TextStyle(
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 2,
-                      ),
-                    ),
+                    stylus('Categories', FontWeight.w700, 24,
+                        textcolor: greenGrey),
                     CircleAvatar(
-                      backgroundColor: Colors.green,
-                      child: Icon(
-                        Icons.shopping_cart_outlined,
-                        color: Colors.white,
+                      backgroundColor: primaryGreen,
+                      child: IconButton(
+                        icon: ImageIcon(AssetImage('assets/images/cart.png'),
+                            size: 30),
+                        color: white,
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => Cart()));
+                        },
                       ),
-                    ),
+                    )
                   ],
                 ),
                 SizedBox(
@@ -105,8 +110,8 @@ class _CategoriesPageState extends State<CategoriesPage> {
               Text(
                 'Raw Fruits',
                 style: TextStyle(
-                  fontSize: 22.0,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
               SizedBox(
@@ -121,10 +126,14 @@ class _CategoriesPageState extends State<CategoriesPage> {
             ),
           ),
           trailing: Icon(
-            Icons.arrow_forward_sharp,
+            Icons.arrow_right_alt,
             size: 35.0,
             color: Colors.grey[400],
           ),
+          onTap: (){
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => CategoriesGrid()));
+          },
         ),
       ),
     );
