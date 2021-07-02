@@ -1,3 +1,4 @@
+import 'package:aduaba_fresh/discover/discover.dart';
 import 'package:flutter/material.dart';
 import '../model/style_refactor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -29,7 +30,7 @@ class _CartState extends State<Cart> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 30,
+            height: 36,
           ),
           GestureDetector(
               onTap: (){Navigator.pop(context);},
@@ -172,7 +173,10 @@ class BottomFloat extends StatelessWidget {
                   'Proceed to Checkout', primaryGreen, primaryGreen, white, ontap: (){Navigator.push(context,
                   MaterialPageRoute(builder: (context) => Checkout()));}),
               SizedBox(height: 16),
-              actionButton('Continue Shopping', white, black, black)
+              actionButton('Continue Shopping', white, black, black, ontap: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Discover()));
+              })
             ],
           ),
         ));

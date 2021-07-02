@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -17,22 +17,21 @@ class _OrderSummaryState extends State<OrderSummary> {
       appBar: AppBar(
         elevation: 5.0,
         backgroundColor: Colors.white,
-        leading: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 18.0),
-          child: IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.keyboard_backspace,
-              color: Colors.black,
-              size: 35.0,
-            ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.keyboard_backspace,
+            color: Colors.black,
+            size: 35.0,
           ),
         ),
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(60.0),
+          preferredSize: const Size.fromHeight(75.0),
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 18.0,
+              horizontal: 16.0,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,17 +39,14 @@ class _OrderSummaryState extends State<OrderSummary> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      'Order Summary',
-                      style: TextStyle(
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.lightGreen.shade500,
-                      ),
-                    ),
+                    stylus('Order Summary', FontWeight.w700, 24,
+                        textcolor: greenGrey),
                   ],
                 ),
-                SizedBox(height: 10.0),
+                SizedBox(height: 16.0),
+                stylus('18 items listed', FontWeight.normal, 16,
+                    textcolor: hintTextColor),
+                SizedBox(height: 16.0),
               ],
             ),
           ),
@@ -58,18 +54,16 @@ class _OrderSummaryState extends State<OrderSummary> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 50.0),
+          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 36.0),
           color: Colors.white,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(
+              stylus(
                 'Your order code is Z38-9811-K9',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey,
-                ),
+                FontWeight.w700,
+                18,
+                textcolor: stepperColor,
               ),
               SizedBox(height: 15.0),
               Text(
@@ -80,34 +74,24 @@ class _OrderSummaryState extends State<OrderSummary> {
               ),
               SizedBox(height: 20),
               progressBarInfo(Colors.amber, 'Order Placed on 26 July',
-                  'We have received your oder', 90.0),
+                  'We have received your oder', 64.0),
               progressBarInfo(
-                  Colors.amber, 'Confirmed', 'Order accepted on 26 July', 90.0),
+                  Colors.amber, 'Confirmed', 'Order accepted on 26 July', 64.0),
               progressBarInfo(
-                  Colors.black, 'Order Shipped', 'Estimated for 3rd Aug', 90.0),
+                  Colors.black, 'Order Shipped', 'Estimated for 3rd Aug', 64.0),
               progressBarInfo(
                   Colors.black, 'Delivered', 'Estimated for 3rd Aug', 0.0),
               //Spacer(),
-              SizedBox(height: 90.0),
-              Container(
-                width: double.infinity,
-                height: 45.0,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.red),
-                  ),
-                  onPressed: () {
-                    showAlertDialog(context, 'Are you sure you want to delete?',
-                        "AppName", "Ok", "Cancel");
-                  },
-                  child: Text(
-                    'Cancel Order',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
+              SizedBox(height: 72.0),
+              actionButton(
+                'Cancel Order',
+                fuschiaPink,
+                fuschiaPink,
+                white,
+                ontap: () {
+                  showAlertDialog(context);
+                },
+              )
             ],
           ),
         ),
@@ -125,12 +109,12 @@ class _OrderSummaryState extends State<OrderSummary> {
               Icons.radio_button_checked_outlined,
               color: radioIconColor,
             ),
-            SizedBox(width: 12),
+            SizedBox(width: 20),
             Text(
               mainSummary,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 19.0,
+                fontSize: 15.0,
               ),
             ),
           ],
@@ -148,11 +132,11 @@ class _OrderSummaryState extends State<OrderSummary> {
                 color: Colors.grey,
               ),
             ),
-            SizedBox(width: 12),
+            SizedBox(width: 26),
             Text(
               subTextSummary,
               style: TextStyle(
-                fontSize: 18.0,
+                fontSize: 15.0,
                 color: Colors.grey,
               ),
             ),
@@ -163,34 +147,72 @@ class _OrderSummaryState extends State<OrderSummary> {
     );
   }
 
-  showAlertDialog(BuildContext context, String message, String heading,
-      String buttonAcceptTitle, String buttonCancelTitle) {
-    // set up the buttons
-    Widget cancelButton = FlatButton(
-      child: Text(buttonCancelTitle),
-      onPressed: () {},
-    );
-    Widget continueButton = FlatButton(
-      child: Text(buttonAcceptTitle),
-      onPressed: () {},
-    );
-
-    // set up the AlertDialog
-    AlertDialog alert = AlertDialog(
-      title: Text(heading),
-      content: Text(message),
-      actions: [
-        cancelButton,
-        continueButton,
-      ],
-    );
-
-    // show the dialog
+  // showAlertDialog(BuildContext context, Text message, Text heading,
+  //     String buttonAcceptTitle, String buttonCancelTitle) {
+  //   // set up the buttons
+  //   Widget cancelButton = TextButton(
+  //     child: Text(buttonCancelTitle),
+  //     onPressed: () {},
+  //   );
+  //   Widget continueButton = TextButton(
+  //     child: Text(buttonAcceptTitle),
+  //     onPressed: () {},
+  //   );
+  //
+  //   // set up the AlertDialog
+  //   AlertDialog alert = AlertDialog(
+  //     title: heading,
+  //     content: message,
+  //     actions: [
+  //       cancelButton,
+  //       continueButton,
+  //     ],
+  //   );
+  //
+  //   // show the dialog
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return alert;
+  //     },
+  //   );
+  // }
+  void showAlertDialog(BuildContext context) {
     showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8.0))),
+            content: Builder(
+              builder: (context) {
+                return Container(
+                    padding: EdgeInsets.all(8),
+                    height: MediaQuery.of(context).size.height / 2.8,
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      children: [
+                        stylus('Cancel Order', FontWeight.w900, 26,
+                            alignment: TextAlign.center),
+                        SizedBox(height: 16),
+                        stylus(
+                            'Cancelling this order Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit vel neque eget ultrices. ',
+                            FontWeight.w400,
+                            16,textcolor: hintTextColor,
+                            alignment: TextAlign.center),
+                        SizedBox(height: 24),
+                        actionButton('Yes, Cancel Order', fuschiaPink,
+                            fuschiaPink, white),
+                        SizedBox(height: 16),
+                        actionButton(
+                            "No, Don't Cancel Order", white, black, black, ontap: (){
+                              Navigator.pop(context);
+                        }),
+                      ],
+                    ));
+              },
+            ),
+          );
+        });
   }
 }

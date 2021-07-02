@@ -1,3 +1,4 @@
+import 'package:aduaba_fresh/discover/discover.dart';
 import 'package:flutter/material.dart';
 import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -100,7 +101,10 @@ class _CheckoutConfirmedState extends State<CheckoutConfirmed> {
               SizedBox(height: 36),
               actionButton('Track Order', primaryGreen, primaryGreen, white),
               SizedBox(height: 16),
-              actionButton('Continue Shopping', white, black, black)
+              actionButton('Continue Shopping', white, black, black, ontap: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Discover()));
+              })
             ],
           ),
         ));

@@ -25,10 +25,14 @@ class _SearchState extends State<Search> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 10,
+            height: 36,
           ),
-          Icon(FontAwesomeIcons.longArrowAltLeft, color: black),
-          SizedBox(height: 16),
+          GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Icon(Icons.keyboard_backspace, size: 35, color: black)),
+          SizedBox(height: 8),
           stylus('Search', FontWeight.w700, 24, textcolor: greenGrey),
           SizedBox(height: 16),
           textInput('Search Product', searchController, TextInputType.text,
@@ -43,7 +47,7 @@ class _SearchState extends State<Search> {
     return Scaffold(
         appBar: PreferredSize(
             preferredSize:
-                Size.fromHeight(MediaQuery.of(context).size.width / 2.2),
+                Size.fromHeight(MediaQuery.of(context).size.width / 2.5),
             child: tab),
         body: ListView(
           padding: const EdgeInsets.all(16.0),

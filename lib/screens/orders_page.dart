@@ -1,35 +1,40 @@
+import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'package:flutter/material.dart';
+import '../bottom_navbar.dart';
+import 'order_summary.dart';
 
 class OrderPage extends StatefulWidget {
-  const OrderPage({Key? key}) : super(key: key);
-
   @override
   _OrderPageState createState() => _OrderPageState();
 }
 
 class _OrderPageState extends State<OrderPage> {
   @override
+  void initState() {
+    index = 2;
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 5.0,
         backgroundColor: Colors.white,
-        leading: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 18.0),
-          child: IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.keyboard_backspace,
-              color: Colors.black,
-              size: 35.0,
-            ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.keyboard_backspace,
+            color: Colors.black,
+            size: 35.0,
           ),
         ),
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(90.0),
+          preferredSize: const Size.fromHeight(75.0),
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 18.0,
+              horizontal: 16.0,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,25 +42,24 @@ class _OrderPageState extends State<OrderPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      'My Orders',
-                      style: TextStyle(
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.lightGreen.shade500,
-                      ),
-                    ),
+                    stylus('My Orders', FontWeight.w700, 24,
+                        textcolor: greenGrey),
                   ],
                 ),
-                SizedBox(height: 10.0),
-                Text('18 items listed'),
-                SizedBox(height: 10.0),
+                SizedBox(height: 16.0),
+                stylus('18 items listed', FontWeight.normal, 16,
+                    textcolor: hintTextColor),
+                SizedBox(height: 16.0),
               ],
             ),
           ),
         ),
       ),
-      body: getOrderslistCard(),
+      bottomNavigationBar: BottomNav(),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: getOrderslistCard(),
+      ),
     );
   }
 
@@ -64,16 +68,38 @@ class _OrderPageState extends State<OrderPage> {
     return ListView.builder(
       itemCount: 1,
       itemBuilder: (context, index) {
-        return Container(
-          child: Column(
-            children: [
-              orderslistCard('Estimated Delivery Date on 21 Dec', Colors.amber),
-              orderslistCard('Cancel', Colors.red),
-              orderslistCard('Delivered on 31 Dec', Colors.green),
-              orderslistCard('Estimated Delivery Date on 21 Dec', Colors.amber),
-              orderslistCard('Cancel', Colors.red),
-              orderslistCard('Delivered on 31 Dec', Colors.green),
-            ],
+        return GestureDetector(
+          onTap: (){
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => OrderSummary()));
+          },
+          child: Container(
+            padding: EdgeInsets.only(top: 36),
+            child: Column(
+              children: [
+                orderslistCard('Estimated Delivery Date on 21 Dec', Colors.amber),
+                SizedBox(height:16),
+                Divider(),
+                SizedBox(height:16),
+                orderslistCard('Cancel', Colors.red),
+                SizedBox(height:16),
+                Divider(),
+                SizedBox(height:16),
+                orderslistCard('Delivered on 31 Dec', Colors.green),
+                SizedBox(height:16),
+                Divider(),
+                SizedBox(height:16),
+                orderslistCard('Estimated Delivery Date on 21 Dec', Colors.amber),
+                SizedBox(height:16),
+                Divider(),
+                SizedBox(height:16),
+                orderslistCard('Cancel', Colors.red),
+                SizedBox(height:16),
+                Divider(),
+                SizedBox(height:16),
+                orderslistCard('Delivered on 31 Dec', Colors.green),
+              ],
+            ),
           ),
         );
       },
@@ -83,55 +109,49 @@ class _OrderPageState extends State<OrderPage> {
   Widget orderslistCard(String orderInfo, Color colors) {
     return Container(
       color: Colors.white,
-      child: Card(
-        child: ListTile(
-          contentPadding: EdgeInsets.all(15),
-          leading: ConstrainedBox(
-            constraints: BoxConstraints(
-              //minWidth: 100,
-              minHeight: 264,
-              maxWidth: 104,
-              maxHeight: 264,
-            ),
-            child: Image.asset(
-              'assets/images/Berry Powder.png',
-              scale: 0.01,
-            ),
-          ),
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
             children: [
-              Text(
-                'Order #:341924186',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                ),
+              Image.asset(
+                'assets/images/Berry Powder.png',
+                scale: 1.1,
               ),
               SizedBox(
-                height: 5.0,
+                width: 16.0,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Order #:341924186',
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 8.0,
+                  ),
+                  Text(
+                    'On 22 January, 2020 1:15pm',
+                    style: TextStyle(
+                      color: Colors.grey[400],
+                    ),
+                  ),
+                  SizedBox(height: 15.0),
+                  Text(
+                    orderInfo,
+                    style: TextStyle(
+                      color: colors,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'On 22 January, 2020 1:15pm',
-                style: TextStyle(
-                  color: Colors.grey[400],
-                ),
-              ),
-              SizedBox(height: 15.0),
-              Text(
-                orderInfo,
-                style: TextStyle(
-                  color: colors,
-                ),
-              ),
-            ],
-          ),
-        ),
+
+        ],
       ),
     );
   }

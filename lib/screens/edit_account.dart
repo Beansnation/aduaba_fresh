@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -12,21 +13,23 @@ class EditAccountPage extends StatefulWidget {
 }
 
 class _EditAccountPageState extends State<EditAccountPage> {
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 5.0,
         backgroundColor: Colors.white,
-        leading: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 18.0),
-          child: IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.keyboard_backspace,
-              color: Colors.black,
-              size: 35.0,
-            ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.keyboard_backspace,
+            color: Colors.black,
+            size: 35.0,
           ),
         ),
         bottom: PreferredSize(
@@ -40,17 +43,11 @@ class _EditAccountPageState extends State<EditAccountPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      'Edit Profile',
-                      style: TextStyle(
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.lightGreen.shade500,
-                      ),
-                    ),
+                    stylus('Edit Profile', FontWeight.w700, 24,
+                        textcolor: greenGrey),
                   ],
                 ),
-                SizedBox(height: 10.0),
+                SizedBox(height: 16.0),
               ],
             ),
           ),
@@ -63,33 +60,24 @@ class _EditAccountPageState extends State<EditAccountPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: 18),
               Center(
                 child: CircleAvatar(
                   backgroundColor: Colors.transparent,
                   backgroundImage:
                       ExactAssetImage('assets/images/ProfilePicChange.png'),
-                  radius: 50.0,
+                  radius: 52.0,
                 ),
               ),
-              SizedBox(height: 100.0),
-              textTitleAndField('First Name', 'Andrea'),
-              textTitleAndField('Last Name', 'Charles'),
-              textTitleAndField('Phone Number', '+234 809 202 3024'),
-              SizedBox(height: 65),
-              Container(
-                width: double.infinity,
-                height: 45.0,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.green),
-                  ),
-                  onPressed: () {},
-                  child: Text(
-                    'Save Changes',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-              )
+              SizedBox(height: 48.0),
+              textTitleAndField('First Name', 'Andrea', firstNameController),
+              textTitleAndField('Last Name', 'Charles', lastNameController),
+              textTitleAndField(
+                  'Phone Number', '+234', phoneController,
+                  type: TextInputType.number),
+              SizedBox(height: 48),
+              actionButton('Save Changes', primaryGreen, primaryGreen, white,
+                  ontap: () {})
             ],
           ),
         ),
@@ -97,7 +85,7 @@ class _EditAccountPageState extends State<EditAccountPage> {
     );
   }
 
-  Widget textTitleAndField(String titleName, hintTextName) {
+  Widget textTitleAndField(String titleName, hintTextName, controller, {type}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -111,6 +99,8 @@ class _EditAccountPageState extends State<EditAccountPage> {
         ),
         SizedBox(height: 15.0),
         TextField(
+          keyboardType: type,
+          controller: controller,
           decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(5.0),
@@ -120,7 +110,7 @@ class _EditAccountPageState extends State<EditAccountPage> {
                 ),
               ),
               filled: true,
-              hintStyle: TextStyle(color: Colors.grey[800]),
+              hintStyle: TextStyle(color: hintTextColor),
               hintText: hintTextName,
               fillColor: Colors.grey[100]),
         ),

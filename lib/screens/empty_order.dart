@@ -1,4 +1,7 @@
+import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'package:flutter/material.dart';
+
+import '../bottom_navbar.dart';
 
 class EmptyOrder extends StatefulWidget {
   const EmptyOrder({Key? key}) : super(key: key);
@@ -9,27 +12,31 @@ class EmptyOrder extends StatefulWidget {
 
 class _EmptyOrderState extends State<EmptyOrder> {
   @override
+  void initState() {
+    index = 2;
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 5.0,
         backgroundColor: Colors.white,
-        leading: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 18.0),
-          child: IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.keyboard_backspace,
-              color: Colors.black,
-              size: 35.0,
-            ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.keyboard_backspace,
+            color: Colors.black,
+            size: 35.0,
           ),
         ),
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(90.0),
+          preferredSize: const Size.fromHeight(75.0),
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 18.0,
+              horizontal: 16.0,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,24 +44,20 @@ class _EmptyOrderState extends State<EmptyOrder> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      'My Orders',
-                      style: TextStyle(
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.lightGreen.shade500,
-                      ),
-                    ),
+                    stylus('My Orders', FontWeight.w700, 24,
+                        textcolor: greenGrey),
                   ],
                 ),
-                SizedBox(height: 10.0),
-                Text('0 items listed'),
-                SizedBox(height: 10.0),
+                SizedBox(height: 16.0),
+                stylus('0 items listed', FontWeight.normal, 16,
+                    textcolor: hintTextColor),
+                SizedBox(height: 16.0),
               ],
             ),
           ),
         ),
       ),
+      bottomNavigationBar:  BottomNav(),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 30),
         color: Colors.white,
@@ -83,22 +86,7 @@ class _EmptyOrderState extends State<EmptyOrder> {
                 ),
               ),
               Spacer(),
-              Container(
-                width: double.infinity,
-                height: 45.0,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.green),
-                  ),
-                  onPressed: () {},
-                  child: Text(
-                    'Start Ordering',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
+              actionButton('Start Ordering', primaryGreen,primaryGreen, white)
             ],
           ),
         ),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'account_page.dart';
 import 'categories_page.dart';
+import 'orders_page.dart';
 
 class DrawerMenu extends StatefulWidget {
   @override
@@ -27,8 +28,8 @@ class _DrawerMenuState extends State<DrawerMenu> {
                       child: Row(
                         children: <Widget>[
                           CircleAvatar(
-                            backgroundImage: NetworkImage(
-                                'https://i.pinimg.com/originals/39/e9/b3/39e9b39628e745a39f900dc14ee4d9a7.jpg'),
+                            backgroundImage: AssetImage(
+                                'assets/images/Profile.jpeg'),
                             radius: 18.0,
                           ),
                           SizedBox(
@@ -44,26 +45,31 @@ class _DrawerMenuState extends State<DrawerMenu> {
                     ),
                   ),
                   buildListTile(Icons.shopping_cart, 'Cart', () {
+                    Navigator.pop(context);
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Cart()));
                   }),
                   buildListTile(Icons.grid_view_rounded, 'Categories', () {
+                    Navigator.pop(context);
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => CategoriesPage()));
                   }),
                   buildListTile(Icons.favorite, 'My Wishlist', () {
+                    Navigator.pop(context);
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => WishlistPage()));
                   }),
                   buildListTile(Icons.shopping_cart, 'Orders', () {
+                    Navigator.pop(context);
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Cart()));
+                        MaterialPageRoute(builder: (context) => OrderPage()));
                   }),
                   buildListTile(Icons.person, 'Account Details', () {
+                    Navigator.pop(context);
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => AccountPage()));
                   }),
@@ -168,11 +174,8 @@ class _DrawerMenuState extends State<DrawerMenu> {
 
   ListTile buildListTile(IconData icon, String text, ontap) {
     return ListTile(
-      leading: Icon(icon, color: greenGrey),
-      title: stylus(text, FontWeight.w400, 18),
-      onTap: () {
-        ontap;
-      },
-    );
+        leading: Icon(icon, color: greenGrey),
+        title: stylus(text, FontWeight.w400, 18),
+        onTap: ontap);
   }
 }

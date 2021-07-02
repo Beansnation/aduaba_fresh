@@ -1,7 +1,13 @@
 import 'dart:ui';
-
+import 'package:aduaba_fresh/model/style_refactor.dart';
+import 'package:aduaba_fresh/registration/sign_in.dart';
+import 'package:aduaba_fresh/screens/payment_page.dart';
+import 'package:aduaba_fresh/screens/wishlist_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'edit_account.dart';
+import 'orders_page.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
@@ -17,15 +23,14 @@ class _AccountPageState extends State<AccountPage> {
       appBar: AppBar(
         elevation: 5.0,
         backgroundColor: Colors.white,
-        leading: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 18.0),
-          child: IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.keyboard_backspace,
-              color: Colors.black,
-              size: 35.0,
-            ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.keyboard_backspace,
+            color: Colors.black,
+            size: 35.0,
           ),
         ),
         bottom: PreferredSize(
@@ -39,17 +44,11 @@ class _AccountPageState extends State<AccountPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      'Account',
-                      style: TextStyle(
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.lightGreen.shade500,
-                      ),
-                    ),
+                    stylus('Account', FontWeight.w700, 24,
+                        textcolor: greenGrey),
                   ],
                 ),
-                SizedBox(height: 10.0),
+                SizedBox(height: 16.0),
               ],
             ),
           ),
@@ -73,14 +72,7 @@ class _AccountPageState extends State<AccountPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Andrea Charles',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                        stylus('Andrea Charles', FontWeight.bold, 18),
                         SizedBox(height: 8.0),
                         Text('Andrea_charles@gmail.com'),
                         SizedBox(height: 8.0),
@@ -91,25 +83,39 @@ class _AccountPageState extends State<AccountPage> {
                   Spacer(),
                   IconButton(
                     icon: Icon(Icons.edit_outlined),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EditAccountPage()));
+                    },
                   ),
                 ],
               ),
               SizedBox(height: 35.0),
               GestureDetector(
                 onTap: () {},
-                child:
-                    accountOptions(Icons.favorite, Colors.red, 'My wishlist'),
+                child: accountOptions(Icons.favorite, Colors.red, 'My wishlist',
+                    ontap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => WishlistPage()));
+                }),
               ),
               Divider(),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => OrderPage()));
+                },
                 child: accountOptions(Icons.shopping_cart_rounded,
                     Colors.deepOrange, 'My orders'),
               ),
               Divider(),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => PaymentPage()));
+                },
                 child: accountOptions(
                     Icons.credit_card_outlined, Colors.green, 'Payments'),
               ),
@@ -128,17 +134,10 @@ class _AccountPageState extends State<AccountPage> {
               SizedBox(
                 height: 45.0,
               ),
-              Container(
-                width: double.infinity,
-                height: 45.0,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.red),
-                  ),
-                  onPressed: () {},
-                  child: Text('Log Out'),
-                ),
-              ),
+              actionButton('Log out', red, red, white, ontap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => SignIn()));
+              }),
             ],
           ),
         ),
@@ -146,9 +145,9 @@ class _AccountPageState extends State<AccountPage> {
     );
   }
 
-  Widget accountOptions(var iconType, var iconColor, String title) {
+  Widget accountOptions(var iconType, var iconColor, String title, {ontap}) {
     return ListTile(
-      onTap: () {},
+      onTap: ontap,
       minLeadingWidth: 15,
       leading: Icon(
         iconType,

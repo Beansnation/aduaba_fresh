@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'package:aduaba_fresh/cart/cart_screen.dart';
-
+import '../bottom_navbar.dart';
 import '../categories_grid.dart';
 
+
+
+
 class CategoriesPage extends StatefulWidget {
-  const CategoriesPage({Key? key}) : super(key: key);
 
   @override
   _CategoriesPageState createState() => _CategoriesPageState();
@@ -13,26 +15,29 @@ class CategoriesPage extends StatefulWidget {
 
 class _CategoriesPageState extends State<CategoriesPage> {
   @override
+  void initState() {
+    index = 0;
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 5.0,
         backgroundColor: Colors.white,
-        leading: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16.0),
-          child: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(
-              Icons.keyboard_backspace,
-              color: Colors.black,
-              size: 35.0,
-            ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.keyboard_backspace,
+            color: Colors.black,
+            size: 35.0,
           ),
         ),
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(100.0),
+          preferredSize: const Size.fromHeight(80.0),
           child: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 16.0,
@@ -60,7 +65,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                   ],
                 ),
                 SizedBox(
-                  height: 20.0,
+                  height: 16.0,
                 ),
                 Text('23 Categories'),
                 SizedBox(
@@ -71,6 +76,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
           ),
         ),
       ),
+      bottomNavigationBar: BottomNav(),
       body: getCategoriesListCard(),
     );
   }

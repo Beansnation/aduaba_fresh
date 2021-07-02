@@ -77,7 +77,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
-                                      width: 60,
+                                      width:48,
                                       child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,

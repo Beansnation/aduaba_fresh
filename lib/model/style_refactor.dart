@@ -18,11 +18,11 @@ Color black = Color(0xFF10151A);
 Color blackGrey = Color(0xFF3E3E3E);
 Color grey = Color(0xFFF7F7F7);
 Color hintTextColor = Color(0xFFBABABA);
-Color favorite = Color(0xFFBB2F48);
 Color red = Colors.red;
 Color stepperColor = Color(0xFF999999);
+int index = 2;
 
-Widget stylus(String text, FontWeight weight, double size,
+ stylus(String text, FontWeight weight, double size,
     {Color? textcolor, TextAlign? alignment, TextDecoration? decoration, double? letterspacing}) {
   return Text(text,
       textAlign: alignment,
@@ -112,7 +112,7 @@ Widget actionButton(
     {ontap}) {
   return GestureDetector(
     child: Container(
-      height: 54,
+      height: 48,
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
       decoration: BoxDecoration(
           color: backgroundColor,

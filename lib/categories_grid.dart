@@ -45,7 +45,11 @@ class _CategoriesGridState extends State<CategoriesGrid> {
           SizedBox(
             height: 36,
           ),
-          Icon(Icons.keyboard_backspace, size: 35, color: black),
+          GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Icon(Icons.keyboard_backspace, size: 35, color: black)),
           SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -221,12 +225,15 @@ class _CategoriesGridState extends State<CategoriesGrid> {
                   stylus('Vendor', FontWeight.bold, 16),
                   SizedBox(height: 24),
                   textInput(
-                      'Search Product', searchController, TextInputType.text,
-                      icon: Icon(
-                        Icons.search,
-                        size: 30,
-                        color: hintTextColor,
-                      ),),
+                    'Search Product',
+                    searchController,
+                    TextInputType.text,
+                    icon: Icon(
+                      Icons.search,
+                      size: 30,
+                      color: hintTextColor,
+                    ),
+                  ),
                   SizedBox(height: 24),
                   stylus('Sub Category', FontWeight.bold, 16),
                   SizedBox(height: 16),

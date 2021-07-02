@@ -1,9 +1,12 @@
 import 'dart:ui';
-
+import 'package:aduaba_fresh/discover/discover.dart';
+import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
+
+import '../bottom_navbar.dart';
 
 class EmptyWishlistPage extends StatefulWidget {
   const EmptyWishlistPage({Key? key}) : super(key: key);
@@ -14,27 +17,31 @@ class EmptyWishlistPage extends StatefulWidget {
 
 class _EmptyWishlistPageState extends State<EmptyWishlistPage> {
   @override
+  void initState() {
+    index = 2;
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 5.0,
         backgroundColor: Colors.white,
-        leading: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 18.0),
-          child: IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.keyboard_backspace,
-              color: Colors.black,
-              size: 35.0,
-            ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.keyboard_backspace,
+            color: Colors.black,
+            size: 35.0,
           ),
         ),
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(90.0),
+          preferredSize: const Size.fromHeight(75.0),
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 18.0,
+              horizontal: 16.0,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,24 +49,19 @@ class _EmptyWishlistPageState extends State<EmptyWishlistPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      'My Wishlist',
-                      style: TextStyle(
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.lightGreen.shade500,
-                      ),
-                    ),
+                    stylus('My Wishlist', FontWeight.w700, 24,
+                        textcolor: greenGrey),
                   ],
                 ),
-                SizedBox(height: 10.0),
-                Text('18 items listed'),
-                SizedBox(height: 10.0),
+                SizedBox(height: 16.0),
+                stylus('18 items listed', FontWeight.normal, 16, textcolor: hintTextColor),
+                SizedBox(height: 16.0),
               ],
             ),
           ),
         ),
       ),
+      bottomNavigationBar: BottomNav(),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 30),
         color: Colors.white,
@@ -95,7 +97,10 @@ class _EmptyWishlistPageState extends State<EmptyWishlistPage> {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.green),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Discover()));
+                  },
                   child: Text(
                     'Discover Products',
                     style: TextStyle(
