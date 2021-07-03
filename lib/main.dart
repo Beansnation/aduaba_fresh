@@ -4,11 +4,11 @@ import 'package:aduaba_fresh/discover/discover.dart';
 import 'package:aduaba_fresh/splash_screen.dart';
 import 'categories_grid.dart';
 import 'package:aduaba_fresh/screens/onboarding.dart';
-import 'checkout/checkout_payment_card.dart';
 import 'checkout/checkout_address.dart';
 import 'cart/cart_screen.dart';
 import 'cart/empty_cart.dart';
 import 'package:aduaba_fresh/registration/sign_in.dart';
+import 'checkout/checkout_card.dart';
 import 'home_screen.dart';
 import 'package:aduaba_fresh/screens/account_page.dart';
 import 'package:aduaba_fresh/screens/categories_page.dart';
@@ -16,7 +16,6 @@ import 'package:aduaba_fresh/screens/drawer-menu.dart';
 import 'package:aduaba_fresh/screens/edit_account.dart';
 import 'package:aduaba_fresh/screens/empty_order.dart';
 import 'package:aduaba_fresh/screens/empty_wishlist_page.dart';
-//import 'package:aduaba_fresh/screens/onboarding_page.dart';
 import 'package:aduaba_fresh/screens/order_summary.dart';
 import 'package:aduaba_fresh/screens/orders_page.dart';
 import 'package:aduaba_fresh/screens/payment_page.dart';
@@ -39,7 +38,7 @@ class MyApp extends StatelessWidget {
         shadowColor: white,
         fontFamily: 'TTNorms pro',
       ),
-      home: Splash(),
+      home: CheckoutCard(),
     );
   }
 }
