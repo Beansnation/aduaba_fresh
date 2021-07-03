@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'package:aduaba_fresh/registration/sign_in.dart';
 import 'package:aduaba_fresh/screens/payment_page.dart';
+import 'package:aduaba_fresh/screens/shipping_details.dart';
 import 'package:aduaba_fresh/screens/wishlist_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -121,7 +122,10 @@ class _AccountPageState extends State<AccountPage> {
               ),
               Divider(),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ShippingDetails()));
+                },
                 child: accountOptions(
                     Icons.electric_rickshaw, Colors.amber, 'Shipping details'),
               ),

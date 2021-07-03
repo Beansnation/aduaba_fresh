@@ -18,10 +18,10 @@ class _BottomNavState extends State<BottomNav> {
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(color: white, boxShadow: [
         BoxShadow(
-            color: black,
+            color: stepperColor,
             spreadRadius: 0,
             blurRadius: 20,
-            offset: Offset(0, -2))
+            offset: Offset(0, -1))
       ]),
       child: Row(children: [
         buildNavBar(

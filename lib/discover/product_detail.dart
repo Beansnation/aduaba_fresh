@@ -76,7 +76,7 @@ class _ProductDetailState extends State<ProductDetail> {
           ),
           Positioned(
             top: 48,
-            left: 16.0,
+            left: 8.0,
             right: 0.0,
             child: Padding(
                 padding: EdgeInsets.all(5.0),
