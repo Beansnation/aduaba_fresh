@@ -149,9 +149,10 @@ class _CartState extends State<Cart> {
               ]),
             ),
             Positioned(
-                top: MediaQuery.of(context).size.height * 5.5 / 11,
+                // top: MediaQuery.of(context).size.height * 5.5 / 11,
                 left: 0.0,
                 right: 0.0,
+                bottom: 6,
                 child: BottomFloat()),
           ],
         ),
@@ -186,7 +187,7 @@ class BottomFloat extends StatelessWidget {
               actionButton('Continue Shopping', white, black, black, ontap: (){
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Discover()));
-              })
+              }),
             ],
           ),
         ));
