@@ -16,60 +16,72 @@ class _CartState extends State<Cart> {
   bool _checkBoxVal3 = false;
   @override
   Widget build(BuildContext context) {
-    final tab = Container(
-      padding: EdgeInsets.all(16),
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(color: white, boxShadow: [
-        BoxShadow(
-            color: black.withOpacity(0.1),
-            spreadRadius: 2,
-            blurRadius: 20,
-            offset: Offset(0, 2))
-      ]),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 36,
-          ),
-          GestureDetector(
-              onTap: (){Navigator.pop(context);},
-              child: Icon(Icons.keyboard_backspace, size: 35, color: black)),
-          SizedBox(height: 12),
-          stylus('Cart', FontWeight.w700, 24, textcolor: greenGrey),
-          SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              stylus('18 items listed', FontWeight.w500, 15,
-                  textcolor: hintTextColor),
-              Row(
-                children: [
-                  Icon(
-                    Icons.check,
-                    color: hintTextColor,
-                  ),
-                  stylus('Select All', FontWeight.w500, 15,
-                      textcolor: hintTextColor),
-                ],
-              ),
-              Row(
-                children: [
-                  Icon(FontAwesomeIcons.trashAlt,
-                      size: 16, color: hintTextColor),
-                  stylus('Delete Selected', FontWeight.w500, 15,
-                      textcolor: hintTextColor),
-                ],
-              )
-            ],
-          )
-        ],
-      ),
+    final tab = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        stylus('18 items listed', FontWeight.w500, 15,
+            textcolor: hintTextColor),
+        Row(
+          children: [
+            Icon(
+              Icons.check,
+              color: hintTextColor,
+            ),
+            stylus('Select All', FontWeight.w500, 15,
+                textcolor: hintTextColor),
+          ],
+        ),
+        Row(
+          children: [
+            Icon(FontAwesomeIcons.trashAlt,
+                size: 16, color: hintTextColor),
+            stylus('Delete Selected', FontWeight.w500, 15,
+                textcolor: hintTextColor),
+          ],
+        )
+      ],
     );
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: Size.fromHeight(MediaQuery.of(context).size.width / 3),
-          child: tab),
+      appBar: AppBar(
+        elevation: 5.0,
+        backgroundColor: Colors.white,
+        leading: SizedBox(
+          height: 35,
+          child: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.keyboard_backspace,
+              color: Colors.black,
+              size: 35.0,
+            ),
+          ),
+        ),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(80.0),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+            ),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    stylus('Cart', FontWeight.w700, 24,
+                        textcolor: greenGrey),
+                  ],
+                ),
+                SizedBox(height: 16.0),
+                tab,
+                SizedBox(height: 16.0),
+
+              ],
+            ),
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Stack(
           children: [
@@ -136,13 +148,11 @@ class _CartState extends State<Cart> {
                 ),
               ]),
             ),
-            Container(
-              child: Positioned(
-                  top: MediaQuery.of(context).size.height * 6 / 11,
-                  left: 0.0,
-                  right: 0.0,
-                  child: BottomFloat()),
-            ),
+            Positioned(
+                top: MediaQuery.of(context).size.height * 5.5 / 11,
+                left: 0.0,
+                right: 0.0,
+                child: BottomFloat()),
           ],
         ),
       ),
