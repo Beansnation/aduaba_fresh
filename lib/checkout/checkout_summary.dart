@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:aduaba_fresh/model/style_refactor.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'checkout_address.dart';
 
 class Checkout extends StatefulWidget {
   @override
@@ -27,7 +27,9 @@ class _CheckoutState extends State<Checkout> {
           SizedBox(
             height: 40,
           ),
-          Icon(Icons.keyboard_backspace, size: 35, color: black),
+          GestureDetector(
+              onTap: ()=>Navigator.pop(context),
+              child: Icon(Icons.keyboard_backspace, size: 35, color: black)),
           SizedBox(height: 8),
           stylus('Checkout', FontWeight.w700, 24, textcolor: greenGrey),
         ],
@@ -142,7 +144,8 @@ class BottomFloat extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 24),
-              actionButton('Continue', primaryGreen, primaryGreen, white)
+              actionButton('Continue', primaryGreen, primaryGreen, white, ontap: (){Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CheckoutAddress()));})
             ],
           ),
         ));

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'bottom_navbar.dart';
 import 'model/style_refactor.dart';
 import 'cart/cart_screen.dart';
 import 'screens/drawer-menu.dart';
@@ -11,24 +12,35 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  @override
+  void initState() {
+    index = 0;
+    super.initState();
+  }
   TextEditingController searchController = TextEditingController();
-  int _selectedIndex = 0;
+
+  var scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    int _selectedIndex = 0;
+
     return Scaffold(
-        //drawer: DrawerMenu(),
+        key: scaffoldKey,
+        drawer: Drawer(child: DrawerMenu()),
         appBar: AppBar(
           backgroundColor: Colors.white,
           shadowColor: Colors.transparent,
-          leading: GestureDetector(
-            onTap: () {
-              DrawerMenu();
-            },
-            child: Image.asset(
-              'assets/images/menu.png',
-              scale: 1.5,
+          leading: IconButton(
+            icon: ImageIcon(
+              AssetImage(
+                'assets/images/menu.png',
+              ),
+              size: 30,
+              color: black,
             ),
+            onPressed: () {
+              scaffoldKey.currentState!.openDrawer();
+            },
           ),
           title: Center(
               child: stylus('Aduaba Fresh', FontWeight.w700, 20,
@@ -43,40 +55,14 @@ class _HomeState extends State<Home> {
                         size: 30),
                     color: white,
                     onPressed: () {
-                      Navigator.pushReplacement(context,
+                      Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Cart()));
                     },
                   ),
                 ))
           ],
         ),
-        bottomNavigationBar: Row(children: [
-          buildNavBar(
-            Icons.home_outlined,
-            0,
-            padding: EdgeInsets.only(left: 80.0),
-            ontap: () {
-              setState(() {
-                _selectedIndex = 0;
-                Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (context) => Home()));
-              });
-            },
-          ),
-          buildNavBar(
-            Icons.search,
-            1,
-            ontap: () {
-              setState(() {
-                _selectedIndex = 1;
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => Discover()));
-              });
-            },
-          ),
-          buildNavBar(Icons.more_horiz, 2,
-              padding: EdgeInsets.only(right: 80.0)),
-        ]),
+        bottomNavigationBar: BottomNav(),
         body: SafeArea(
           child: ListView(
             padding: const EdgeInsets.all(16.0),
@@ -102,7 +88,7 @@ class _HomeState extends State<Home> {
               GestureDetector(
                 child: buildRow("Categories"),
                 onTap: () {
-                  Navigator.pushReplacement(
+                  Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => CategoriesPage()));
@@ -168,27 +154,5 @@ class _HomeState extends State<Home> {
             ],
           ),
         ));
-  }
-
-  Widget buildNavBar(IconData icon, int index,
-      {EdgeInsetsGeometry? padding, ontap}) {
-    return GestureDetector(
-      onTap: ontap,
-      child: Container(
-        padding: padding,
-        height: 80,
-        width: MediaQuery.of(context).size.width / 3,
-        decoration: BoxDecoration(boxShadow: [
-          BoxShadow(
-              color: white,
-              spreadRadius: 2,
-              blurRadius: 20,
-              offset: Offset(2, 0))
-        ]),
-        child: Icon(icon,
-            size: 32,
-            color: index == _selectedIndex ? primaryGreen : hintTextColor),
-      ),
-    );
   }
 }

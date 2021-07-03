@@ -33,7 +33,7 @@ class _ProductDetailState extends State<ProductDetail> {
                           textcolor: greenGrey),
                       trailing: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Icon(Icons.favorite, color: favorite),
+                        child: Icon(Icons.favorite, color: fuschiaPink),
                       ),
                     ),
                     SizedBox(

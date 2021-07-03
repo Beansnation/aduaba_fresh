@@ -1,7 +1,7 @@
+import 'package:aduaba_fresh/checkout/checkout_confirmed.dart';
 import 'package:flutter/material.dart';
 import 'package:aduaba_fresh/model/style_refactor.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'checkout_summary.dart';
+import 'checkout_address.dart';
 import 'checkout_payment_card.dart';
 
 class CheckoutPayment extends StatefulWidget {
@@ -42,9 +42,9 @@ class _CheckoutPaymentState extends State<CheckoutPayment> {
           InkWell(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Checkout()));
+                    MaterialPageRoute(builder: (context) => CheckoutAddress()));
               },
-              child: Icon(FontAwesomeIcons.arrowLeft, color: black)),
+              child: Icon(Icons.keyboard_backspace,size:35, color: black)),
           SizedBox(height: 16),
           stylus('Checkout', FontWeight.w700, 24, textcolor: greenGrey),
           SizedBox(height: 16),
@@ -86,7 +86,7 @@ class _CheckoutPaymentState extends State<CheckoutPayment> {
     return Scaffold(
         appBar: PreferredSize(
             preferredSize:
-                Size.fromHeight(MediaQuery.of(context).size.width / 2),
+                Size.fromHeight(MediaQuery.of(context).size.width / 2.5),
             child: tab),
         body: Stack(children: [
           ListView(padding: EdgeInsets.all(16), children: [
@@ -125,14 +125,14 @@ class _CheckoutPaymentState extends State<CheckoutPayment> {
             top: MediaQuery.of(context).size.height * 8 / 13,
             left: 0.0,
             right: 0.0,
-            child: Align(
+      child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
                   padding: EdgeInsets.all(16),
                   color: white,
                   child: actionButton(
                       'Pay Now', primaryGreen, primaryGreen, white,
-                      ontap: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckoutPaymentCard()));}),
+                      ontap: () {_value == 1 ? Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckoutConfirmed())):Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckoutPaymentCard())); }),
                 )),
           )
         ]));

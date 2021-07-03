@@ -1,9 +1,12 @@
+import 'package:aduaba_fresh/categories_grid.dart';
 import 'package:flutter/material.dart';
+import '../bottom_navbar.dart';
 import '../model/style_refactor.dart';
 import '../cart/cart_screen.dart';
 import 'search.dart';
 import '../home_screen.dart';
 import 'product_detail.dart';
+import 'package:aduaba_fresh/screens/drawer-menu.dart';
 
 class Discover extends StatefulWidget {
   @override
@@ -11,7 +14,12 @@ class Discover extends StatefulWidget {
 }
 
 class _DiscoverState extends State<Discover> {
-  int _selectedIndex = 1;
+  @override
+  void initState() {
+    index = 1;
+    super.initState();
+  }
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +37,7 @@ class _DiscoverState extends State<Discover> {
     final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
     final double itemWidth = size.width / 2;
     final tab = Container(
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.only(left: 5, right: 16, top: 16, bottom: 16),
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height / 2,
       decoration: BoxDecoration(color: white, boxShadow: [
@@ -47,10 +55,19 @@ class _DiscoverState extends State<Discover> {
           ),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset(
-                  'assets/images/menu.png',
-                  scale: 2,
+                IconButton(
+                  icon: ImageIcon(
+                    AssetImage(
+                      'assets/images/menu.png',
+                    ),
+                    size: 30,
+                    color: black,
+                  ),
+                  onPressed: () {
+                    scaffoldKey.currentState!.openDrawer();
+                  },
                 ),
                 SizedBox(width: 32),
                 stylus('Discover', FontWeight.w700, 24, textcolor: greenGrey),
@@ -100,8 +117,16 @@ class _DiscoverState extends State<Discover> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: stylus('RawFruits', FontWeight.w500, 16,
-                      textcolor: hintTextColor),
+                  child: GestureDetector(
+                    child: stylus('RawFruits', FontWeight.w500, 16,
+                        textcolor: hintTextColor),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CategoriesGrid()));
+                    },
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -125,26 +150,13 @@ class _DiscoverState extends State<Discover> {
       ),
     );
     return Scaffold(
+        key: scaffoldKey,
+        drawer: Drawer(child: DrawerMenu()),
         appBar: PreferredSize(
             preferredSize:
                 Size.fromHeight(MediaQuery.of(context).size.width / 3.1),
             child: tab),
-        bottomNavigationBar: Row(children: [
-          buildNavBar(Icons.home_outlined, 0,
-              padding: EdgeInsets.only(left: 80.0), ontap: () {
-                _selectedIndex = 0;
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => Home()));
-          }),
-          GestureDetector(
-              child: buildNavBar(Icons.search, 1),
-              onTap: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => Discover()));
-              }),
-          buildNavBar(Icons.more_horiz, 2,
-              padding: EdgeInsets.only(right: 80.0)),
-        ]),
+        bottomNavigationBar: BottomNav(),
         body: ListView(
           padding: const EdgeInsets.only(left: 16.0, top: 16, bottom: 16),
           children: [
@@ -167,12 +179,12 @@ class _DiscoverState extends State<Discover> {
 
   Widget buildCard(int num, bool isFavorite) {
     return GestureDetector(
-      onTap: ()=>Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => ProductDetail())) ,
+      onTap: () => Navigator.push(
+          context, MaterialPageRoute(builder: (context) => ProductDetail())),
       child: Container(
           margin: EdgeInsets.only(right: 16.0),
-          decoration:
-              BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(4.0))),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(4.0))),
           child: Stack(
             children: [
               Column(
@@ -180,8 +192,8 @@ class _DiscoverState extends State<Discover> {
                 children: [
                   Container(
                       color: grey,
-                      child:
-                          Image.asset('assets/images/image$num.png', scale: 3.5)),
+                      child: Image.asset('assets/images/image$num.png',
+                          scale: 3.5)),
                   SizedBox(height: 8.0),
                   stylus('Emmanuel Produce', FontWeight.w500, 12,
                       textcolor: greenGrey),
@@ -221,28 +233,6 @@ class _DiscoverState extends State<Discover> {
               ),
             ],
           )),
-    );
-  }
-
-  Widget buildNavBar(IconData icon, int index,
-      {EdgeInsetsGeometry? padding, ontap}) {
-    return GestureDetector(
-      onTap: ontap,
-      child: Container(
-        padding: padding,
-        height: 80,
-        width: MediaQuery.of(context).size.width / 3,
-        decoration: BoxDecoration(boxShadow: [
-          BoxShadow(
-              color: white,
-              spreadRadius: 2,
-              blurRadius: 20,
-              offset: Offset(2, 0))
-        ]),
-        child: Icon(icon,
-            size: 32,
-            color: index == _selectedIndex ? primaryGreen : hintTextColor),
-      ),
     );
   }
 }

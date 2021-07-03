@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'checkout_summary.dart';
+import 'checkout_payment.dart';
 
 class CheckoutAddress extends StatefulWidget {
   @override
@@ -42,10 +43,9 @@ class _CheckoutAddressState extends State<CheckoutAddress> {
           ),
           InkWell(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Checkout()));
+                Navigator.pop(context);
               },
-              child: Icon(FontAwesomeIcons.arrowLeft, color: black)),
+              child: Icon(Icons.keyboard_backspace,size: 35, color: black)),
           SizedBox(height: 16),
           stylus('Checkout', FontWeight.w700, 24, textcolor: greenGrey),
           SizedBox(height: 16),
@@ -90,7 +90,7 @@ class _CheckoutAddressState extends State<CheckoutAddress> {
     return Scaffold(
         appBar: PreferredSize(
             preferredSize:
-                Size.fromHeight(MediaQuery.of(context).size.width / 2),
+                Size.fromHeight(MediaQuery.of(context).size.width / 2.5),
             child: tab),
         body: Stack(children: [
           ListView(
@@ -101,14 +101,17 @@ class _CheckoutAddressState extends State<CheckoutAddress> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   stylus('Shipping address', FontWeight.w700, 26),
-                  Row(children: [
-                    Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Icon(Icons.add, color: hintTextColor),
-                    ),
-                    stylus('Add Address', FontWeight.w500, 16,
-                        textcolor: hintTextColor)
-                  ]),
+                  GestureDetector(
+                    child: Row(children: [
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Icon(Icons.add, color: hintTextColor),
+                      ),
+                      stylus('Add Address', FontWeight.w500, 16,
+                          textcolor: hintTextColor)
+                    ]),
+                    onTap: ()=>onpressed(),
+                  ),
                 ],
               ),
               SizedBox(height: 24),
@@ -128,7 +131,8 @@ class _CheckoutAddressState extends State<CheckoutAddress> {
                   color: white,
                   child: actionButton(
                       'Proceed to Payment', primaryGreen, primaryGreen, white,
-                      ontap: () => onpressed()),
+                      ontap: () { Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => CheckoutPayment()));}),
                 )),
           )
         ]));

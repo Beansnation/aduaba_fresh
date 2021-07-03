@@ -18,16 +18,17 @@ Color black = Color(0xFF10151A);
 Color blackGrey = Color(0xFF3E3E3E);
 Color grey = Color(0xFFF7F7F7);
 Color hintTextColor = Color(0xFFBABABA);
-Color favorite = Color(0xFFBB2F48);
 Color red = Colors.red;
 Color stepperColor = Color(0xFF999999);
+int index = 2;
 
-Widget stylus(String text, FontWeight weight, double size,
-    {Color? textcolor, TextAlign? alignment, TextDecoration? decoration}) {
+ stylus(String text, FontWeight weight, double size,
+    {Color? textcolor, TextAlign? alignment, TextDecoration? decoration, double? letterspacing}) {
   return Text(text,
       textAlign: alignment,
       style: TextStyle(
         decoration: decoration,
+          letterSpacing: letterspacing,
           fontWeight: weight,
           color: textcolor,
           fontSize: size,
@@ -111,7 +112,7 @@ Widget actionButton(
     {ontap}) {
   return GestureDetector(
     child: Container(
-      height: 54,
+      height: 48,
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
       decoration: BoxDecoration(
           color: backgroundColor,
@@ -191,7 +192,7 @@ Card buildPromoCard(Color color) {
           ),
         ),
         SizedBox(width: 20),
-        Image.asset('assets/images/basket.png', scale: 4.0)
+        Container(child: Image.asset('assets/images/basket.png', scale: 4.0))
       ],
     ),
   );
@@ -236,13 +237,16 @@ Container cartCard(onchanged, bool checkBoxVal, String headLine,
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Container(
-          child: Checkbox(
-              value: checkBoxVal,
-              activeColor: orange,
-              checkColor: hintTextColor,
-              onChanged: onchanged),
-        ),
+          SizedBox(
+            height: 26,
+            width:20,
+            child:
+           Checkbox(
+                value: checkBoxVal,
+                activeColor: orange,
+                checkColor: hintTextColor,
+                onChanged: onchanged)),
+
         Container(
             margin: EdgeInsets.only(right: 16.0),
             child: Column(
@@ -346,4 +350,6 @@ Widget buildVerifyPin(
                   counterText: '',
                   hintStyle: TextStyle(color: Colors.black, fontSize: 20.0)))));
 }
+
+
 
