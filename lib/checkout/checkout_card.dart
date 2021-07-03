@@ -1,3 +1,4 @@
+import 'package:aduaba_fresh/model/slide.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:aduaba_fresh/model/style_refactor.dart';
@@ -15,35 +16,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
   TextEditingController cardExpiryController = TextEditingController();
   TextEditingController cvvController = TextEditingController();
   int currentIndex = 0;
-  List items = [
-    [
-      'assets/svg/visa.svg',
-      '3282    .  .  .  .     .  .  .  .    3282',
-      'Card Holder',
-      'Expires',
-      'Aycan Doganlar',
-      '12/23',
-      '0xFFEB7777'
-    ],
-    [
-      'assets/svg/visa.svg',
-      '3282    .  .  .  .     .  .  .  .    3282',
-      'Card Holder',
-      'Expires',
-      'Aycan Doganlar',
-      '12/23',
-      '0xFFE75A21'
-    ],
-    [
-      'assets/svg/visa.svg',
-      '3282    .  .  .  .     .  .  .  .    3282',
-      'Card Holder',
-      'Expires',
-      'Aycan Doganlar',
-      '12/23',
-      '0xFF7AA0DA'
-    ]
-  ];
+
   List<T> map<T>(List list, Function handler) {
     List<T> result = [];
     for (var i = 0; i < list.length; i++) {
@@ -150,7 +123,6 @@ class _CheckoutCardState extends State<CheckoutCard> {
                     options: CarouselOptions(
                         height: 250,
                         aspectRatio: 2.0,
-                        //viewportFraction: 0.75,
                         initialPage: 0,
                         enableInfiniteScroll: true,
                         pageSnapping: true,
@@ -201,7 +173,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
                                                           .spaceBetween,
                                                   children: [
                                                     stylus(i[2],
-                                                        FontWeight.w400, 13,
+                                                        FontWeight.w500, 13,
                                                         textcolor: white),
                                                     stylus(i[3],
                                                         FontWeight.w400, 13,
