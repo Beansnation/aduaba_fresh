@@ -11,35 +11,41 @@ class _CheckoutState extends State<Checkout> {
   @override
   Widget build(BuildContext context) {
 
-    final tab = Container(
-      padding: EdgeInsets.all(16),
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(color: white, boxShadow: [
-        BoxShadow(
-            color: black.withOpacity(0.1),
-            spreadRadius: 2,
-            blurRadius: 20,
-            offset: Offset(0, 2))
-      ]),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 40,
-          ),
-          GestureDetector(
-              onTap: ()=>Navigator.pop(context),
-              child: Icon(Icons.keyboard_backspace, size: 35, color: black)),
-          SizedBox(height: 8),
-          stylus('Checkout', FontWeight.w700, 24, textcolor: greenGrey),
-        ],
-      ),
-    );
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize:
-              Size.fromHeight(MediaQuery.of(context).size.width / 3.6),
-          child: tab),
+      appBar: AppBar(
+        elevation: 5.0,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.keyboard_backspace,
+            color: Colors.black,
+            size: 35.0,
+          ),
+        ),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(50.0),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 18.0,
+            ),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    stylus('Checkout', FontWeight.w700, 24,
+                        textcolor: greenGrey),
+                  ],
+                ),
+                SizedBox(height: 16.0),
+              ],
+            ),
+          ),
+        ),
+      ),
       body: Stack(
         children: [
           ListView(

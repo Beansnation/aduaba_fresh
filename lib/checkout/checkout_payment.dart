@@ -2,7 +2,7 @@ import 'package:aduaba_fresh/checkout/checkout_confirmed.dart';
 import 'package:flutter/material.dart';
 import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'checkout_address.dart';
-import 'checkout_payment_card.dart';
+import 'checkout_card.dart';
 
 class CheckoutPayment extends StatefulWidget {
   @override
@@ -132,7 +132,7 @@ class _CheckoutPaymentState extends State<CheckoutPayment> {
                   color: white,
                   child: actionButton(
                       'Pay Now', primaryGreen, primaryGreen, white,
-                      ontap: () {_value == 1 ? Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckoutConfirmed())):Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckoutPaymentCard())); }),
+                      ontap: () {_value == 1 ? Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckoutConfirmed())):Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckoutCard())); }),
                 )),
           )
         ]));
