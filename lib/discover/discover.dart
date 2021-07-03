@@ -20,21 +20,39 @@ class _DiscoverState extends State<Discover> {
     super.initState();
   }
   var scaffoldKey = GlobalKey<ScaffoldState>();
+  Color favColor = white;
+  Color favColor1 = white;
+  Color favColor2 = white;
+  Color favColor3 = white;
+  Color favColor4 = white;
+  Color favColor5 = white;
 
   @override
   Widget build(BuildContext context) {
     List<Widget> cards = [
-      buildCard(6, true),
-      buildCard(7, false),
-      buildCard(8, false),
-      buildCard(9, false),
-      buildCard(3, false),
-      buildCard(3, false),
+      buildCard(6,favColor, (){setState(() {
+        favColor = red;
+      });}),
+      buildCard(7,favColor3, (){setState(() {
+        favColor3 = red;
+      });}),
+      buildCard(8, favColor1,(){setState(() {
+        favColor1 = red;
+      });}),
+      buildCard(9,favColor2, (){setState(() {
+        favColor2 = red;
+      });}),
+      buildCard(3, favColor4,(){setState(() {
+        favColor4 = red;
+      });}),
+      buildCard(3, favColor5, (){setState(() {
+        favColor5 = red;
+      });}),
     ];
     var size = MediaQuery.of(context).size;
 
     /*24 is for notification bar on Android*/
-    final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
+    final double itemHeight = 348 ;
     final double itemWidth = size.width / 2;
     final tab = Container(
       padding: EdgeInsets.only(left: 5, right: 16, top: 16, bottom: 16),
@@ -154,7 +172,7 @@ class _DiscoverState extends State<Discover> {
         drawer: Drawer(child: DrawerMenu()),
         appBar: PreferredSize(
             preferredSize:
-                Size.fromHeight(MediaQuery.of(context).size.width / 3.1),
+                Size.fromHeight(MediaQuery.of(context).size.width / 2.9),
             child: tab),
         bottomNavigationBar: BottomNav(),
         body: ListView(
@@ -177,7 +195,7 @@ class _DiscoverState extends State<Discover> {
         ));
   }
 
-  Widget buildCard(int num, bool isFavorite) {
+  Widget buildCard(int num, Color favColor, Function()? ontap) {
     return GestureDetector(
       onTap: () => Navigator.push(
           context, MaterialPageRoute(builder: (context) => ProductDetail())),
@@ -211,9 +229,11 @@ class _DiscoverState extends State<Discover> {
                           textcolor: orange),
                       SizedBox(width: 13.7),
                       stylus('In stock', FontWeight.w600, 16,
-                          textcolor: darkGreen)
+                          textcolor: darkGreen),
+                      SizedBox(height: 18),
                     ],
-                  )
+                  ),
+
                 ],
               ),
               Positioned(
@@ -225,9 +245,9 @@ class _DiscoverState extends State<Discover> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        isFavorite
-                            ? Icon(Icons.favorite, color: red)
-                            : Icon(Icons.favorite, color: white)
+                        GestureDetector(
+                            onTap: ontap,
+                            child: Icon(Icons.favorite, color: favColor))
                       ],
                     )),
               ),

@@ -1,3 +1,4 @@
+import 'package:aduaba_fresh/model/slide.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:aduaba_fresh/model/style_refactor.dart';
@@ -15,35 +16,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
   TextEditingController cardExpiryController = TextEditingController();
   TextEditingController cvvController = TextEditingController();
   int currentIndex = 0;
-  List items = [
-    [
-      'assets/svg/visa.svg',
-      '3282    .  .  .  .     .  .  .  .    3282',
-      'Card Holder',
-      'Expires',
-      'Aycan Doganlar',
-      '12/23',
-      '0xFFEB7777'
-    ],
-    [
-      'assets/svg/visa.svg',
-      '3282    .  .  .  .     .  .  .  .    3282',
-      'Card Holder',
-      'Expires',
-      'Aycan Doganlar',
-      '12/23',
-      '0xFFE75A21'
-    ],
-    [
-      'assets/svg/visa.svg',
-      '3282    .  .  .  .     .  .  .  .    3282',
-      'Card Holder',
-      'Expires',
-      'Aycan Doganlar',
-      '12/23',
-      '0xFF7AA0DA'
-    ]
-  ];
+
   List<T> map<T>(List list, Function handler) {
     List<T> result = [];
     for (var i = 0; i < list.length; i++) {
@@ -55,70 +28,84 @@ class _CheckoutCardState extends State<CheckoutCard> {
   @override
   Widget build(BuildContext context) {
     double stepper = MediaQuery.of(context).size.width / 2.6;
-    final tab = Container(
-      padding: EdgeInsets.all(16),
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(color: white, boxShadow: [
-        BoxShadow(
-            color: black.withOpacity(0.1),
-            spreadRadius: 2,
-            blurRadius: 20,
-            offset: Offset(0, 2))
-      ]),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 36,
-          ),
-          InkWell(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Icon(Icons.keyboard_backspace, size: 35, color: black)),
-          SizedBox(height: 10),
-          stylus('Checkout', FontWeight.w700, 24, textcolor: greenGrey),
-          SizedBox(height: 16),
-          Row(
-            children: [
-              CircleAvatar(
-                backgroundColor: primaryGreen,
+    final tab = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            CircleAvatar(
+              backgroundColor: primaryGreen,
+              radius: 10,
+            ),
+            Container(height: 4, width: stepper, color: primaryGreen),
+            CircleAvatar(
+              backgroundColor: primaryGreen,
+              radius: 10,
+            ),
+            Container(height: 4, width: stepper, color: stepperColor),
+            CircleAvatar(
+                backgroundColor: stepperColor,
                 radius: 10,
-              ),
-              Container(height: 4, width: stepper, color: primaryGreen),
-              CircleAvatar(
-                backgroundColor: primaryGreen,
-                radius: 10,
-              ),
-              Container(height: 4, width: stepper, color: stepperColor),
-              CircleAvatar(
-                  backgroundColor: stepperColor,
-                  radius: 10,
-                  child: CircleAvatar(
-                    backgroundColor: white,
-                    radius: 7,
-                  )),
-            ],
-          ),
-          SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              stylus('Billing', FontWeight.normal, 16, textcolor: stepperColor),
-              SizedBox(width: 8),
-              stylus('Payment', FontWeight.normal, 16, textcolor: stepperColor),
-              stylus('Confirmation', FontWeight.normal, 16,
-                  textcolor: stepperColor)
-            ],
-          )
-        ],
-      ),
+                child: CircleAvatar(
+                  backgroundColor: white,
+                  radius: 7,
+                )),
+          ],
+        ),
+        SizedBox(height: 8),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            stylus('Billing', FontWeight.normal, 16, textcolor: stepperColor),
+            SizedBox(width: 8),
+            stylus('Payment', FontWeight.normal, 16, textcolor: stepperColor),
+            stylus('Confirmation', FontWeight.normal, 16,
+                textcolor: stepperColor)
+          ],
+        )
+      ],
     );
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize:
-              Size.fromHeight(MediaQuery.of(context).size.width / 2.6),
-          child: tab),
+      appBar: AppBar(
+        elevation: 5.0,
+        backgroundColor: Colors.white,
+        leading: SizedBox(
+          height: 35,
+          child: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.keyboard_backspace,
+              color: Colors.black,
+              size: 35.0,
+            ),
+          ),
+        ),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(100.0),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+            ),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    stylus('Checkout', FontWeight.w700, 24,
+                        textcolor: greenGrey),
+                  ],
+                ),
+                SizedBox(height: 16.0),
+                tab,
+                SizedBox(height: 16.0),
+
+              ],
+            ),
+          ),
+        ),
+      ),
       body: Stack(
         children: [
           ListView(
@@ -150,7 +137,6 @@ class _CheckoutCardState extends State<CheckoutCard> {
                     options: CarouselOptions(
                         height: 250,
                         aspectRatio: 2.0,
-                        //viewportFraction: 0.75,
                         initialPage: 0,
                         enableInfiniteScroll: true,
                         pageSnapping: true,
@@ -201,7 +187,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
                                                           .spaceBetween,
                                                   children: [
                                                     stylus(i[2],
-                                                        FontWeight.w400, 13,
+                                                        FontWeight.w500, 13,
                                                         textcolor: white),
                                                     stylus(i[3],
                                                         FontWeight.w400, 13,
@@ -234,7 +220,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: map<Widget>(items, (index, url) {
+                children: map<Widget>(items, (index, card) {
                   return Container(
                     width: 8.0,
                     height: 8.0,

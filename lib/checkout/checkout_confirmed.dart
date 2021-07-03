@@ -22,72 +22,87 @@ class _CheckoutConfirmedState extends State<CheckoutConfirmed> {
     double stepper = MediaQuery.of(context).size.width / 2.6;
     String address1 =
         'For Contactless Delivery we recommend go cashless and stay with Aduabe Fresh Pay';
-    final tab = Container(
-      padding: EdgeInsets.all(16),
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(color: white, boxShadow: [
-        BoxShadow(
-            color: black.withOpacity(0.1),
-            spreadRadius: 2,
-            blurRadius: 20,
-            offset: Offset(0, 2))
-      ]),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 36,
-          ),
-          InkWell(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Icon(Icons.keyboard_backspace,size: 35, color: black)),
-          SizedBox(height: 10),
-          stylus('Checkout', FontWeight.w700, 24, textcolor: greenGrey),
-          SizedBox(height: 16),
-          Row(
-            children: [
-              CircleAvatar(
-                backgroundColor: primaryGreen,
-                radius: 10,
-              ),
-              Container(height: 4, width: stepper, color: primaryGreen),
-              CircleAvatar(
-                backgroundColor: primaryGreen,
-                radius: 10,
-              ),
-              Container(height: 4, width: stepper, color: primaryGreen),
-              CircleAvatar(
-                backgroundColor: primaryGreen,
-                radius: 10,
-              ),
-            ],
-          ),
-          SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              stylus('Billing', FontWeight.normal, 16, textcolor: stepperColor),
-              SizedBox(width: 8),
-              stylus('Payment', FontWeight.normal, 16, textcolor: stepperColor),
-              stylus('Confirmation', FontWeight.normal, 16,
-                  textcolor: stepperColor)
-            ],
-          )
-        ],
-      ),
+    final tab = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            CircleAvatar(
+              backgroundColor: primaryGreen,
+              radius: 10,
+            ),
+            Container(height: 4, width: stepper, color: primaryGreen),
+            CircleAvatar(
+              backgroundColor: primaryGreen,
+              radius: 10,
+            ),
+            Container(height: 4, width: stepper, color: primaryGreen),
+            CircleAvatar(
+              backgroundColor: primaryGreen,
+              radius: 10,
+            ),
+          ],
+        ),
+        SizedBox(height: 8),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            stylus('Billing', FontWeight.normal, 16, textcolor: stepperColor),
+            SizedBox(width: 8),
+            stylus('Payment', FontWeight.normal, 16, textcolor: stepperColor),
+            stylus('Confirmation', FontWeight.normal, 16,
+                textcolor: stepperColor)
+          ],
+        )
+      ],
     );
     return Scaffold(
-        appBar: PreferredSize(
-            preferredSize:
-                Size.fromHeight(MediaQuery.of(context).size.width / 2.5),
-            child: tab),
+        appBar: AppBar(
+          elevation: 5.0,
+          backgroundColor: Colors.white,
+          leading: SizedBox(
+            height: 35,
+            child: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                Icons.keyboard_backspace,
+                color: Colors.black,
+                size: 35.0,
+              ),
+            ),
+          ),
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(100.0),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      stylus('Checkout', FontWeight.w700, 24,
+                          textcolor: greenGrey),
+                    ],
+                  ),
+                  SizedBox(height: 16.0),
+                  tab,
+                  SizedBox(height: 16.0),
+
+                ],
+              ),
+            ),
+          ),
+        ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height/7),
+              //SizedBox(height: MediaQuery.of(context).size.height/9),
+              Spacer(),
               Image.asset('assets/images/cartConfirmed.png', scale: 3),
               SizedBox(height: MediaQuery.of(context).size.height/12),
               stylus('Order Confirmed', FontWeight.bold, 24,

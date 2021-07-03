@@ -13,6 +13,13 @@ class _CategoriesGridState extends State<CategoriesGrid> {
   TextEditingController startController = TextEditingController();
   TextEditingController endController = TextEditingController();
   bool checkboxVal = false;
+  bool checkboxVal1 = true;
+  bool checkboxVal2 = false;
+  bool checkboxVal3 = true;
+  bool checkboxVal4 = true;
+  bool checkboxVal5 = true;
+  bool checkboxVal6 = true;
+  bool checkboxVal7 = true;
   RangeValues values = RangeValues(0, 2000000);
   double start = 0.00;
   double end = 2000000.00;
@@ -27,104 +34,99 @@ class _CategoriesGridState extends State<CategoriesGrid> {
       buildCard(3, false),
     ];
     var size = MediaQuery.of(context).size;
-    final double itemHeight = (size.height - kToolbarHeight - 24) / 2.2;
+    final double itemHeight = 350;
     final double itemWidth = size.width / 2;
-    final tab = Container(
-      padding: EdgeInsets.all(16),
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(color: white, boxShadow: [
-        BoxShadow(
-            color: black.withOpacity(0.1),
-            spreadRadius: 2,
-            blurRadius: 20,
-            offset: Offset(0, 2))
-      ]),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 36,
-          ),
-          GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Icon(Icons.keyboard_backspace, size: 35, color: black)),
-          SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              stylus('Raw Food', FontWeight.w700, 24, textcolor: greenGrey),
-              CircleAvatar(
-                backgroundColor: primaryGreen,
-                child: IconButton(
-                    icon: ImageIcon(AssetImage('assets/images/cart.png'),
-                        size: 24),
-                    color: white,
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Cart()));
-                    }),
-              )
-            ],
-          ),
-          SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              stylus('18 items listed', FontWeight.normal, 16,
-                  textcolor: hintTextColor),
-              Row(
-                children: [
-                  Container(
+    final tab = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            stylus('18 items listed', FontWeight.normal, 16,
+                textcolor: hintTextColor),
+            Row(
+              children: [
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ImageIcon(AssetImage('assets/images/sort.png'), size: 16),
+                      SizedBox(width: 4),
+                      stylus('Sort', FontWeight.w400, 16, textcolor: blackGrey),
+                      SizedBox(width: 4),
+                      Icon(FontAwesomeIcons.chevronDown,
+                          size: 14, color: hintTextColor),
+                    ],
+                  ),
+                ),
+                SizedBox(width: 20),
+                ImageIcon(AssetImage('assets/images/vertical bar.png'),
+                    color: hintTextColor),
+                SizedBox(width: 20),
+                GestureDetector(
+                  child: Container(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        ImageIcon(AssetImage('assets/images/sort.png'),
-                            size: 16),
+                        Icon(Icons.filter_alt_outlined, size: 20),
                         SizedBox(width: 4),
-                        stylus('Sort', FontWeight.w400, 16,
+                        stylus('Filter', FontWeight.w400, 16,
                             textcolor: blackGrey),
-                        SizedBox(width: 4),
-                        Icon(FontAwesomeIcons.chevronDown,
-                            size: 14, color: hintTextColor),
                       ],
                     ),
                   ),
-                  SizedBox(width: 20),
-                  ImageIcon(AssetImage('assets/images/vertical bar.png'),
-                      color: hintTextColor),
-                  SizedBox(width: 20),
-                  GestureDetector(
-                    child: Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon(Icons.filter_alt_outlined, size: 20),
-                          SizedBox(width: 4),
-                          stylus('Filter', FontWeight.w400, 16,
-                              textcolor: blackGrey),
-                        ],
-                      ),
-                    ),
-                    onTap: () {
-                      setState(() {
-                        bottomSheet(context);
-                      });
-                    },
-                  ),
-                ],
-              ),
-            ],
-          )
-        ],
-      ),
+                  onTap: () {
+                    setState(() {
+                      bottomSheet(context);
+                    });
+                  },
+                ),
+              ],
+            ),
+          ],
+        )
+      ],
     );
     return Scaffold(
-        appBar: PreferredSize(
-            preferredSize:
-                Size.fromHeight(MediaQuery.of(context).size.width / 2.8),
-            child: tab),
+        appBar: AppBar(
+          elevation: 5.0,
+          backgroundColor: Colors.white,
+          leading: SizedBox(
+            height: 35,
+            child: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                Icons.keyboard_backspace,
+                color: Colors.black,
+                size: 35.0,
+              ),
+            ),
+          ),
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(80.0),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      stylus('Raw Food', FontWeight.w700, 24,
+                          textcolor: greenGrey),
+                    ],
+                  ),
+                  SizedBox(height: 16.0),
+                  tab,
+                  SizedBox(height: 16.0),
+                ],
+              ),
+            ),
+          ),
+        ),
         body: ListView(
           padding: const EdgeInsets.only(left: 16.0, top: 16, bottom: 16),
           children: [
@@ -240,8 +242,46 @@ class _CategoriesGridState extends State<CategoriesGrid> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(child: buildColumn()),
-                      Container(child: buildColumn())
+                      Container(child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          buildInnerRow('Granular Fruits', checkboxVal, (bool value){setState(() {
+                            checkboxVal = value;
+                          });} ),
+                          SizedBox(height: 16),
+                          buildInnerRow('Meats & Fish', checkboxVal1, (bool value){setState(() {
+                            checkboxVal1 = value;
+                          });}),
+                          SizedBox(height: 16),
+                          buildInnerRow('Organic Food',checkboxVal2, (bool value){setState(() {
+                            checkboxVal2 = value;
+                          });}),
+                          SizedBox(height: 16),
+                          buildInnerRow('Low-Carbs',checkboxVal3, (bool value){setState(() {
+                            checkboxVal3 = value;
+                          });}),
+                        ],
+                      )),
+                      Container(child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          buildInnerRow('Granular Fruits', checkboxVal4, (bool value){setState(() {
+                            checkboxVal4 = value;
+                          });} ),
+                          SizedBox(height: 16),
+                          buildInnerRow('Meats & Fish', checkboxVal5, (bool value){setState(() {
+                            checkboxVal5 = value;
+                          });}),
+                          SizedBox(height: 16),
+                          buildInnerRow('Organic Food',checkboxVal6, (bool value){setState(() {
+                            checkboxVal6 = value;
+                          });}),
+                          SizedBox(height: 16),
+                          buildInnerRow('Low-Carbs',checkboxVal7, (bool value){setState(() {
+                            checkboxVal7 = value;
+                          });}),
+                        ],
+                      ))
                     ],
                   ),
                   SizedBox(height: 16),
@@ -311,32 +351,17 @@ class _CategoriesGridState extends State<CategoriesGrid> {
     );
   }
 
-  Column buildColumn() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        buildInnerRow('Granular Fruits'),
-        SizedBox(height: 16),
-        buildInnerRow('Meats & Fish'),
-        SizedBox(height: 16),
-        buildInnerRow('Organic Food'),
-        SizedBox(height: 16),
-        buildInnerRow('Low-Carbs'),
-      ],
-    );
-  }
 
-  Row buildInnerRow(String text) {
+  Row buildInnerRow(String text, bool checkboxVal, onchanged) {
     return Row(
       children: [
         SizedBox(
           height: 24,
           width: 24,
           child: Checkbox(
+            activeColor: red,
             value: checkboxVal,
-            onChanged: (bool? value) {
-              value = checkboxVal;
-            },
+            onChanged: onchanged
           ),
         ),
         SizedBox(width: 16),

@@ -71,7 +71,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           children: [
                             Spacer(flex: 6),
                             Expanded(
-                              flex: 4,
+                              flex: 5,
                               child: Container(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
