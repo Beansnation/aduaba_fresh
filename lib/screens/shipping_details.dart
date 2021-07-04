@@ -42,7 +42,7 @@ class _ShippingDetailsState extends State<ShippingDetails> {
             ),
           ),
           bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(60.0),
+            preferredSize: const Size.fromHeight(50.0),
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 16.0,

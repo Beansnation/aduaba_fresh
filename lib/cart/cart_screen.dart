@@ -92,9 +92,9 @@ class _CartState extends State<Cart> {
                   child: Column(
                     children: [
                       cartCard(
-                              (bool value) {
+                              (bool? value) {
                         setState(() {
-                          this._checkBoxVal = value;
+                          this._checkBoxVal = value!;
                         });
                       },
                           this._checkBoxVal,
@@ -103,9 +103,9 @@ class _CartState extends State<Cart> {
                           'N35,000.00',
                           'assets/images/cart1.png'),
                       SizedBox(height: 16),
-                      cartCard((bool value) {
+                      cartCard((bool? value) {
                         setState(() {
-                          this._checkBoxVal1 = value;
+                          this._checkBoxVal1 = value!;
                         });
                       },
                           this._checkBoxVal1,
@@ -114,9 +114,9 @@ class _CartState extends State<Cart> {
                           'N35,000.00',
                           'assets/images/cart2.png'),
                       SizedBox(height: 16),
-                      cartCard((bool value) {
+                      cartCard((bool? value) {
                         setState(() {
-                          this._checkBoxVal2 = value;
+                          this._checkBoxVal2 = value!;
                         });
                       },
                           this._checkBoxVal2,
@@ -125,9 +125,9 @@ class _CartState extends State<Cart> {
                           'N35,000.00',
                           'assets/images/cart2.png'),
                       SizedBox(height: 16),
-                      cartCard((bool value) {
+                      cartCard((bool? value) {
                         setState(() {
-                          this._checkBoxVal3 = value;
+                          this._checkBoxVal3 = value!;
                         });
                       },
                           this._checkBoxVal3,
@@ -188,6 +188,7 @@ class BottomFloat extends StatelessWidget {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Discover()));
               }),
+              SizedBox(height: 16),
             ],
           ),
         ));
