@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:aduaba_fresh/bottom_navbar.dart';
+import 'package:aduaba_fresh/widgets/bottom_navbar.dart';
 
 class WishlistPage extends StatefulWidget {
   const WishlistPage({Key? key}) : super(key: key);
@@ -17,6 +17,7 @@ class _WishlistPageState extends State<WishlistPage> {
     index = 2;
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +51,8 @@ class _WishlistPageState extends State<WishlistPage> {
                   ],
                 ),
                 SizedBox(height: 16.0),
-                stylus('18 items listed', FontWeight.normal, 16, textcolor: hintTextColor),
+                stylus('18 items listed', FontWeight.normal, 16,
+                    textcolor: hintTextColor),
                 SizedBox(height: 16.0),
               ],
             ),
@@ -74,28 +76,26 @@ class _WishlistPageState extends State<WishlistPage> {
       },
     );
   }
+
   Padding wishlistCard() {
     return Padding(
-      padding: const EdgeInsets.only(bottom :18.0),
+      padding: const EdgeInsets.only(bottom: 18.0),
       child: Row(
         children: [
-          Image.asset('assets/images/Berry Powder.png', scale:.85),
+          Image.asset('assets/images/Berry Powder.png', scale: .85),
           SizedBox(width: 16),
           Container(
               width: 230,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  stylus(
-                      'Herbsconnect Organic Acai Berry Powder Freeze Dried',
-                      FontWeight.w600,
-                      16),
+                  stylus('Herbsconnect Organic Acai Berry Powder Freeze Dried',
+                      FontWeight.w600, 16),
                   SizedBox(height: 10),
                   stylus('Emmanuel Produce', FontWeight.w500, 14,
                       textcolor: hintTextColor),
                   SizedBox(height: 10),
                   Row(
-
                     children: [
                       stylus('N35,000.00', FontWeight.w700, 14,
                           textcolor: orange),
@@ -103,7 +103,6 @@ class _WishlistPageState extends State<WishlistPage> {
                       stylus('.', FontWeight.w900, 14,
                           textcolor: hintTextColor),
                       SizedBox(width: 6.5),
-
                       stylus('In stock', FontWeight.w600, 16,
                           textcolor: darkGreen)
                     ],

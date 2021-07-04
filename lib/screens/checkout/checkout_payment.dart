@@ -1,8 +1,8 @@
-import 'package:aduaba_fresh/checkout/checkout_confirmed.dart';
 import 'package:flutter/material.dart';
 import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'checkout_address.dart';
 import 'checkout_card.dart';
+import 'checkout_confirmed.dart';
 
 class CheckoutPayment extends StatefulWidget {
   @override
@@ -19,7 +19,6 @@ class _CheckoutPaymentState extends State<CheckoutPayment> {
   TextEditingController cityController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-
     double stepper = MediaQuery.of(context).size.width / 2.6;
     String address1 =
         'For Contactless Delivery we recommend go cashless and stay with Aduabe Fresh Pay';
@@ -95,7 +94,6 @@ class _CheckoutPaymentState extends State<CheckoutPayment> {
                   SizedBox(height: 16.0),
                   tab,
                   SizedBox(height: 16.0),
-
                 ],
               ),
             ),
@@ -121,7 +119,8 @@ class _CheckoutPaymentState extends State<CheckoutPayment> {
               subtitle: Row(
                 children: [
                   SizedBox(height: 60),
-                  stylus('MORE DETAILS', FontWeight.w600, 16, decoration: TextDecoration.underline),
+                  stylus('MORE DETAILS', FontWeight.w600, 16,
+                      decoration: TextDecoration.underline),
                   SizedBox(width: 4),
                   Icon(Icons.add)
                 ],
@@ -138,30 +137,39 @@ class _CheckoutPaymentState extends State<CheckoutPayment> {
             top: MediaQuery.of(context).size.height * 8 / 13,
             left: 0.0,
             right: 0.0,
-      child: Align(
+            child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
                   padding: EdgeInsets.all(16),
                   color: white,
                   child: actionButton(
-                      'Pay Now', primaryGreen, primaryGreen, white,
-                      ontap: () {_value == 1 ? Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckoutConfirmed())):Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckoutCard())); }),
+                      'Pay Now', primaryGreen, primaryGreen, white, ontap: () {
+                    _value == 1
+                        ? Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CheckoutConfirmed()))
+                        : Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CheckoutCard()));
+                  }),
                 )),
           )
         ]));
   }
 
-  Radio<int> buildRadio( int value) {
+  Radio<int> buildRadio(int value) {
     return Radio(
-              activeColor: orange,
-              splashRadius: 30,
-              value: value,
-              groupValue: _value,
-              onChanged: (int? value) {
-                setState(() {
-                  _value = value;
-                });
-              },
-            );
+      activeColor: orange,
+      splashRadius: 30,
+      value: value,
+      groupValue: _value,
+      onChanged: (int? value) {
+        setState(() {
+          _value = value;
+        });
+      },
+    );
   }
 }

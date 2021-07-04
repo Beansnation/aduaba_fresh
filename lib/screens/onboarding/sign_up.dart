@@ -1,8 +1,8 @@
-import 'package:aduaba_fresh/registration/sign_in.dart';
+import 'package:aduaba_fresh/model/style_refactor.dart';
+import 'package:aduaba_fresh/screens/onboarding/sign_in.dart';
 import 'package:flutter/material.dart';
-import '../model/style_refactor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:aduaba_fresh/home_screen.dart';
+import 'package:aduaba_fresh/screens/home/home_screen.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -101,7 +101,12 @@ class _SignUpState extends State<SignUp> {
                 textInput('retype password', confirmPasswordController,
                     TextInputType.visiblePassword),
                 SizedBox(height: 20),
-                actionButton('Create Account', primaryGreen, primaryGreen, white, ontap: (){Navigator.push(context, MaterialPageRoute(builder:(context)=>Home()));} ),
+                actionButton(
+                    'Create Account', primaryGreen, primaryGreen, white,
+                    ontap: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => Home()));
+                }),
                 SizedBox(height: 16),
                 Center(
                   child: Row(
@@ -110,10 +115,14 @@ class _SignUpState extends State<SignUp> {
                         stylus('Have an account already?', FontWeight.w500, 16),
                         SizedBox(width: 4.0),
                         GestureDetector(
-                          child: stylus('Sign in', FontWeight.w700, 16,
-                              textcolor: primaryGreen),
-                          onTap: (){Navigator.push(context, MaterialPageRoute(builder:(context)=>SignIn()));}
-                        )
+                            child: stylus('Sign in', FontWeight.w700, 16,
+                                textcolor: primaryGreen),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignIn()));
+                            })
                       ]),
                 )
               ],

@@ -1,10 +1,9 @@
+import 'package:aduaba_fresh/screens/cart/cart_screen.dart';
 import 'package:flutter/material.dart';
-import 'bottom_navbar.dart';
-import 'model/style_refactor.dart';
-import 'cart/cart_screen.dart';
-import 'screens/drawer-menu.dart';
-import 'screens/categories_page.dart';
-import 'discover/discover.dart';
+import '../../widgets/bottom_navbar.dart';
+import '../../model/style_refactor.dart';
+import 'drawer-menu.dart';
+import '../categories/categories_page.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -12,18 +11,17 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   @override
   void initState() {
     index = 0;
     super.initState();
   }
+
   TextEditingController searchController = TextEditingController();
 
   var scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         key: scaffoldKey,
         drawer: Drawer(child: DrawerMenu()),

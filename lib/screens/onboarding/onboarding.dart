@@ -1,5 +1,5 @@
-import 'package:aduaba_fresh/registration/sign_in.dart';
-import 'package:aduaba_fresh/registration/sign_up.dart';
+import 'package:aduaba_fresh/screens/onboarding/sign_in.dart';
+import 'package:aduaba_fresh/screens/onboarding/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -77,7 +77,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
-                                      width:48,
+                                      width: 48,
                                       child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,

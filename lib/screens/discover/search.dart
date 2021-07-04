@@ -1,5 +1,5 @@
+import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'package:flutter/material.dart';
-import '../model/style_refactor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Search extends StatefulWidget {
@@ -35,12 +35,16 @@ class _SearchState extends State<Search> {
           SizedBox(height: 8),
           stylus('Search', FontWeight.w700, 24, textcolor: greenGrey),
           SizedBox(height: 16),
-          textInput('Search Product', searchController, TextInputType.text,
-              icon: Icon(
-                Icons.search,
-                size: 30,
-                color: hintTextColor,
-              ),),
+          textInput(
+            'Search Product',
+            searchController,
+            TextInputType.text,
+            icon: Icon(
+              Icons.search,
+              size: 30,
+              color: hintTextColor,
+            ),
+          ),
         ],
       ),
     );
@@ -72,36 +76,33 @@ class _SearchState extends State<Search> {
 
   Row buildPopularSearch(int num) {
     return Row(
+      children: [
+        Image.asset('assets/images/search$num.png', scale: 3.5),
+        SizedBox(width: 16),
+        Container(
+            width: 250,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset('assets/images/search$num.png', scale: 3.5),
-                SizedBox(width: 16),
-                Container(
-                    width: 250,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        stylus(
-                            'Herbsconnect Organic Acai Berry Powder Freeze Dried',
-                            FontWeight.w600,
-                            16),
-                          SizedBox(height: 12),
-                        stylus('Emmanuel Produce', FontWeight.w500, 14,
-                            textcolor: hintTextColor),
-                        SizedBox(height: 12),
-                        Row(
-
-                          children: [
-                            stylus('N35,000.00', FontWeight.w700, 14,
-                                textcolor: orange),
-                            SizedBox(width: 13.7),
-                            stylus('In stock', FontWeight.w600, 16,
-                                textcolor: darkGreen)
-                          ],
-                        )
-                      ],
-                    ))
+                stylus('Herbsconnect Organic Acai Berry Powder Freeze Dried',
+                    FontWeight.w600, 16),
+                SizedBox(height: 12),
+                stylus('Emmanuel Produce', FontWeight.w500, 14,
+                    textcolor: hintTextColor),
+                SizedBox(height: 12),
+                Row(
+                  children: [
+                    stylus('N35,000.00', FontWeight.w700, 14,
+                        textcolor: orange),
+                    SizedBox(width: 13.7),
+                    stylus('In stock', FontWeight.w600, 16,
+                        textcolor: darkGreen)
+                  ],
+                )
               ],
-            );
+            ))
+      ],
+    );
   }
 
   ListTile buildSearchTags(String text) {

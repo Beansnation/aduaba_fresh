@@ -1,9 +1,9 @@
-import 'package:aduaba_fresh/registration/sign_in_forgot_password.dart';
-import 'package:aduaba_fresh/registration/sign_up.dart';
+import 'package:aduaba_fresh/model/style_refactor.dart';
+import 'package:aduaba_fresh/screens/onboarding/sign_in_forgot_password.dart';
+import 'package:aduaba_fresh/screens/onboarding/sign_up.dart';
 import 'package:flutter/material.dart';
-import '../model/style_refactor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:aduaba_fresh/home_screen.dart';
+import 'package:aduaba_fresh/screens/home/home_screen.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -54,8 +54,12 @@ class _SignInState extends State<SignIn> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     GestureDetector(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>ForgotPassword()));
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    ForgotPassword()));
                       },
                       child: stylus('Forgot Password?', FontWeight.w600, 16,
                           textcolor: greenGrey),
@@ -63,7 +67,11 @@ class _SignInState extends State<SignIn> {
                   ],
                 ),
                 SizedBox(height: 24),
-                actionButton('Login', primaryGreen, primaryGreen, white, ontap: (){Navigator.push(context, MaterialPageRoute(builder:(context)=>Home()));}),
+                actionButton('Login', primaryGreen, primaryGreen, white,
+                    ontap: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => Home()));
+                }),
                 SizedBox(height: 16),
                 Center(
                     child: stylus(

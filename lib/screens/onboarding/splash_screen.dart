@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
-import 'screens/onboarding.dart';
+import 'onboarding.dart';
 
 class Splash extends StatefulWidget {
   @override
@@ -36,8 +36,8 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     Future.delayed(
         Duration(seconds: 6),
-        () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => OnBoardingPage())));
+        () => Navigator.push(context,
+            MaterialPageRoute(builder: (context) => OnBoardingPage())));
     return Scaffold(
         body: FadeTransition(
       opacity: _animation,

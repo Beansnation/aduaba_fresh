@@ -1,21 +1,27 @@
+import 'dart:ui';
 import 'package:aduaba_fresh/model/style_refactor.dart';
+import 'package:aduaba_fresh/screens/discover/discover.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
 
-import '../bottom_navbar.dart';
+import '../../widgets/bottom_navbar.dart';
 
-class EmptyOrder extends StatefulWidget {
-  const EmptyOrder({Key? key}) : super(key: key);
+class EmptyWishlistPage extends StatefulWidget {
+  const EmptyWishlistPage({Key? key}) : super(key: key);
 
   @override
-  _EmptyOrderState createState() => _EmptyOrderState();
+  _EmptyWishlistPageState createState() => _EmptyWishlistPageState();
 }
 
-class _EmptyOrderState extends State<EmptyOrder> {
+class _EmptyWishlistPageState extends State<EmptyWishlistPage> {
   @override
   void initState() {
     index = 2;
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,12 +50,12 @@ class _EmptyOrderState extends State<EmptyOrder> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    stylus('My Orders', FontWeight.w700, 24,
+                    stylus('My Wishlist', FontWeight.w700, 24,
                         textcolor: greenGrey),
                   ],
                 ),
                 SizedBox(height: 16.0),
-                stylus('0 items listed', FontWeight.normal, 16,
+                stylus('18 items listed', FontWeight.normal, 16,
                     textcolor: hintTextColor),
                 SizedBox(height: 16.0),
               ],
@@ -57,7 +63,7 @@ class _EmptyOrderState extends State<EmptyOrder> {
           ),
         ),
       ),
-      bottomNavigationBar:  BottomNav(),
+      bottomNavigationBar: BottomNav(),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 30),
         color: Colors.white,
@@ -67,12 +73,12 @@ class _EmptyOrderState extends State<EmptyOrder> {
             children: <Widget>[
               SizedBox(height: 30.0),
               Image.asset(
-                'assets/images/EmptyOrder.png',
+                'assets/images/EmptyWishlist.png',
                 fit: BoxFit.cover,
               ),
               SizedBox(height: 40.0),
               Text(
-                'No orders yet',
+                'Your wishlist is empty',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 22.0,
@@ -81,12 +87,30 @@ class _EmptyOrderState extends State<EmptyOrder> {
               Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: Text(
-                  'Hit the three button down below to create an order',
+                  'Hit the three button down below to find interesting products',
                   textAlign: TextAlign.center,
                 ),
               ),
               Spacer(),
-              actionButton('Start Ordering', primaryGreen,primaryGreen, white)
+              Container(
+                width: double.infinity,
+                height: 45.0,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.green),
+                  ),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Discover()));
+                  },
+                  child: Text(
+                    'Discover Products',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

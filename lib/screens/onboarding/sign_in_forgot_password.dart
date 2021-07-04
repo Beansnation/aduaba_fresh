@@ -1,6 +1,6 @@
-import 'package:aduaba_fresh/registration/sign_in.dart';
+import 'package:aduaba_fresh/model/style_refactor.dart';
+import 'package:aduaba_fresh/screens/onboarding/sign_in.dart';
 import 'package:flutter/material.dart';
-import '../model/style_refactor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ForgotPassword extends StatefulWidget {
@@ -65,9 +65,12 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               alignment: TextAlign.center),
                           SizedBox(height: 28),
                           actionButton(
-                              'Sign in', primaryGreen, primaryGreen, white, ontap: (){
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => SignIn()));
+                              'Sign in', primaryGreen, primaryGreen, white,
+                              ontap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignIn()));
                           }),
                         ],
                       ));

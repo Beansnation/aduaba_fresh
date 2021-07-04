@@ -1,6 +1,6 @@
 import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'package:flutter/material.dart';
-import '../bottom_navbar.dart';
+import '../../widgets/bottom_navbar.dart';
 import 'order_summary.dart';
 
 class OrderPage extends StatefulWidget {
@@ -14,6 +14,7 @@ class _OrderPageState extends State<OrderPage> {
     index = 2;
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +70,7 @@ class _OrderPageState extends State<OrderPage> {
       itemCount: 1,
       itemBuilder: (context, index) {
         return GestureDetector(
-          onTap: (){
+          onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => OrderSummary()));
           },
@@ -77,26 +78,28 @@ class _OrderPageState extends State<OrderPage> {
             padding: EdgeInsets.only(top: 36),
             child: Column(
               children: [
-                orderslistCard('Estimated Delivery Date on 21 Dec', Colors.amber),
-                SizedBox(height:16),
+                orderslistCard(
+                    'Estimated Delivery Date on 21 Dec', Colors.amber),
+                SizedBox(height: 16),
                 Divider(),
-                SizedBox(height:16),
+                SizedBox(height: 16),
                 orderslistCard('Cancel', Colors.red),
-                SizedBox(height:16),
+                SizedBox(height: 16),
                 Divider(),
-                SizedBox(height:16),
+                SizedBox(height: 16),
                 orderslistCard('Delivered on 31 Dec', Colors.green),
-                SizedBox(height:16),
+                SizedBox(height: 16),
                 Divider(),
-                SizedBox(height:16),
-                orderslistCard('Estimated Delivery Date on 21 Dec', Colors.amber),
-                SizedBox(height:16),
+                SizedBox(height: 16),
+                orderslistCard(
+                    'Estimated Delivery Date on 21 Dec', Colors.amber),
+                SizedBox(height: 16),
                 Divider(),
-                SizedBox(height:16),
+                SizedBox(height: 16),
                 orderslistCard('Cancel', Colors.red),
-                SizedBox(height:16),
+                SizedBox(height: 16),
                 Divider(),
-                SizedBox(height:16),
+                SizedBox(height: 16),
                 orderslistCard('Delivered on 31 Dec', Colors.green),
               ],
             ),
@@ -109,7 +112,8 @@ class _OrderPageState extends State<OrderPage> {
   Widget orderslistCard(String orderInfo, Color colors) {
     return Container(
       color: Colors.white,
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
@@ -150,7 +154,6 @@ class _OrderPageState extends State<OrderPage> {
               ),
             ],
           ),
-
         ],
       ),
     );

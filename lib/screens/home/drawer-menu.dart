@@ -1,10 +1,10 @@
-import 'package:aduaba_fresh/cart/cart_screen.dart';
-import 'package:aduaba_fresh/screens/wishlist_page.dart';
+import 'package:aduaba_fresh/screens/account/wishlist_page.dart';
+import 'package:aduaba_fresh/screens/cart/cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:aduaba_fresh/model/style_refactor.dart';
-import 'account_page.dart';
-import 'categories_page.dart';
-import 'orders_page.dart';
+import '../account/account_page.dart';
+import '../categories/categories_page.dart';
+import '../account/orders_page.dart';
 
 class DrawerMenu extends StatefulWidget {
   @override
@@ -28,8 +28,8 @@ class _DrawerMenuState extends State<DrawerMenu> {
                       child: Row(
                         children: <Widget>[
                           CircleAvatar(
-                            backgroundImage: AssetImage(
-                                'assets/images/Profile.jpeg'),
+                            backgroundImage:
+                                AssetImage('assets/images/Profile.jpeg'),
                             radius: 18.0,
                           ),
                           SizedBox(

@@ -1,5 +1,5 @@
+import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'package:flutter/material.dart';
-import '../model/style_refactor.dart';
 
 class NullSearch extends StatefulWidget {
   @override
@@ -30,25 +30,32 @@ class _NullSearchState extends State<NullSearch> {
           SizedBox(height: 16),
           stylus('Search', FontWeight.w700, 24, textcolor: greenGrey),
           SizedBox(height: 16),
-          textInput('Search Product', searchController, TextInputType.text,
-              icon: Icon(
-                Icons.search,
-                size: 30,
-                color: hintTextColor,
-              ),),
+          textInput(
+            'Search Product',
+            searchController,
+            TextInputType.text,
+            icon: Icon(
+              Icons.search,
+              size: 30,
+              color: hintTextColor,
+            ),
+          ),
         ],
       ),
     );
     return Scaffold(
         appBar: PreferredSize(
             preferredSize:
-            Size.fromHeight(MediaQuery.of(context).size.width / 2.2),
+                Size.fromHeight(MediaQuery.of(context).size.width / 2.2),
             child: tab),
         body: ListView(
           padding: const EdgeInsets.all(16.0),
           children: [
             stylus('No Search Result', FontWeight.w700, 18),
-            stylus("We currently don't have what you’re looking for.  Why not try out similar products", FontWeight.w500, 14),
+            stylus(
+                "We currently don't have what you’re looking for.  Why not try out similar products",
+                FontWeight.w500,
+                14),
             SizedBox(height: 32),
             stylus('Related Searches', FontWeight.w700, 18),
             SizedBox(height: 24),
@@ -71,16 +78,13 @@ class _NullSearchState extends State<NullSearch> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                stylus(
-                    'Herbsconnect Organic Acai Berry Powder Freeze Dried',
-                    FontWeight.w600,
-                    16),
+                stylus('Herbsconnect Organic Acai Berry Powder Freeze Dried',
+                    FontWeight.w600, 16),
                 SizedBox(height: 12),
                 stylus('Emmanuel Produce', FontWeight.w500, 14,
                     textcolor: hintTextColor),
                 SizedBox(height: 12),
                 Row(
-
                   children: [
                     stylus('N35,000.00', FontWeight.w700, 14,
                         textcolor: orange),
@@ -94,5 +98,4 @@ class _NullSearchState extends State<NullSearch> {
       ],
     );
   }
-
 }

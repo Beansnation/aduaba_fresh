@@ -1,26 +1,22 @@
-import 'dart:ui';
-import 'package:aduaba_fresh/discover/discover.dart';
 import 'package:aduaba_fresh/model/style_refactor.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
 
-import '../bottom_navbar.dart';
+import '../../widgets/bottom_navbar.dart';
 
-class EmptyWishlistPage extends StatefulWidget {
-  const EmptyWishlistPage({Key? key}) : super(key: key);
+class EmptyOrder extends StatefulWidget {
+  const EmptyOrder({Key? key}) : super(key: key);
 
   @override
-  _EmptyWishlistPageState createState() => _EmptyWishlistPageState();
+  _EmptyOrderState createState() => _EmptyOrderState();
 }
 
-class _EmptyWishlistPageState extends State<EmptyWishlistPage> {
+class _EmptyOrderState extends State<EmptyOrder> {
   @override
   void initState() {
     index = 2;
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,12 +45,13 @@ class _EmptyWishlistPageState extends State<EmptyWishlistPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    stylus('My Wishlist', FontWeight.w700, 24,
+                    stylus('My Orders', FontWeight.w700, 24,
                         textcolor: greenGrey),
                   ],
                 ),
                 SizedBox(height: 16.0),
-                stylus('18 items listed', FontWeight.normal, 16, textcolor: hintTextColor),
+                stylus('0 items listed', FontWeight.normal, 16,
+                    textcolor: hintTextColor),
                 SizedBox(height: 16.0),
               ],
             ),
@@ -71,12 +68,12 @@ class _EmptyWishlistPageState extends State<EmptyWishlistPage> {
             children: <Widget>[
               SizedBox(height: 30.0),
               Image.asset(
-                'assets/images/EmptyWishlist.png',
+                'assets/images/EmptyOrder.png',
                 fit: BoxFit.cover,
               ),
               SizedBox(height: 40.0),
               Text(
-                'Your wishlist is empty',
+                'No orders yet',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 22.0,
@@ -85,30 +82,12 @@ class _EmptyWishlistPageState extends State<EmptyWishlistPage> {
               Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: Text(
-                  'Hit the three button down below to find interesting products',
+                  'Hit the three button down below to create an order',
                   textAlign: TextAlign.center,
                 ),
               ),
               Spacer(),
-              Container(
-                width: double.infinity,
-                height: 45.0,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.green),
-                  ),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Discover()));
-                  },
-                  child: Text(
-                    'Discover Products',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
+              actionButton('Start Ordering', primaryGreen, primaryGreen, white)
             ],
           ),
         ),

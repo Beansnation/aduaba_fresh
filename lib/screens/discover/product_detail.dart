@@ -1,5 +1,5 @@
+import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'package:flutter/material.dart';
-import '../model/style_refactor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProductDetail extends StatefulWidget {
@@ -83,9 +83,10 @@ class _ProductDetailState extends State<ProductDetail> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    GestureDetector(child: Icon(Icons.keyboard_backspace, color: white, size: 35),
-                    onTap: ()=>Navigator.pop(context)
-                    )
+                    GestureDetector(
+                        child: Icon(Icons.keyboard_backspace,
+                            color: white, size: 35),
+                        onTap: () => Navigator.pop(context))
                   ],
                 )),
           ),

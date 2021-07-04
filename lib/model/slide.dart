@@ -1,4 +1,3 @@
-import 'package:aduaba_fresh/checkout/checkout_card.dart';
 import 'package:flutter/material.dart';
 
 class Slide {
@@ -33,8 +32,6 @@ final slideList = [
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus tincidunt bibendum. Maecenas eu viverra orci. Duis diam leo, porta at justo vitae, euismod aliquam nulla.',
   ),
 ];
-
-
 
 //carousel slider CheckoutCard
 List items = [

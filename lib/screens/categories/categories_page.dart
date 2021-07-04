@@ -1,14 +1,10 @@
+import 'package:aduaba_fresh/screens/cart/cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:aduaba_fresh/model/style_refactor.dart';
-import 'package:aduaba_fresh/cart/cart_screen.dart';
-import '../bottom_navbar.dart';
-import '../categories_grid.dart';
-
-
-
+import '../../widgets/bottom_navbar.dart';
+import 'categories_grid.dart';
 
 class CategoriesPage extends StatefulWidget {
-
   @override
   _CategoriesPageState createState() => _CategoriesPageState();
 }
@@ -136,7 +132,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
             size: 35.0,
             color: Colors.grey[400],
           ),
-          onTap: (){
+          onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => CategoriesGrid()));
           },

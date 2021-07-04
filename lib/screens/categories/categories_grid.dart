@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'model/style_refactor.dart';
-import 'cart/cart_screen.dart';
+import '../../model/style_refactor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CategoriesGrid extends StatefulWidget {
@@ -242,44 +241,70 @@ class _CategoriesGridState extends State<CategoriesGrid> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(child: Column(
+                      Container(
+                          child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          buildInnerRow('Granular Fruits', checkboxVal, (bool value){setState(() {
-                            checkboxVal = value;
-                          });} ),
+                          buildInnerRow('Granular Fruits', checkboxVal,
+                              (bool value) {
+                            setState(() {
+                              checkboxVal = value;
+                            });
+                          }),
                           SizedBox(height: 16),
-                          buildInnerRow('Meats & Fish', checkboxVal1, (bool value){setState(() {
-                            checkboxVal1 = value;
-                          });}),
+                          buildInnerRow('Meats & Fish', checkboxVal1,
+                              (bool value) {
+                            setState(() {
+                              checkboxVal1 = value;
+                            });
+                          }),
                           SizedBox(height: 16),
-                          buildInnerRow('Organic Food',checkboxVal2, (bool value){setState(() {
-                            checkboxVal2 = value;
-                          });}),
+                          buildInnerRow('Organic Food', checkboxVal2,
+                              (bool value) {
+                            setState(() {
+                              checkboxVal2 = value;
+                            });
+                          }),
                           SizedBox(height: 16),
-                          buildInnerRow('Low-Carbs',checkboxVal3, (bool value){setState(() {
-                            checkboxVal3 = value;
-                          });}),
+                          buildInnerRow('Low-Carbs', checkboxVal3,
+                              (bool value) {
+                            setState(() {
+                              checkboxVal3 = value;
+                            });
+                          }),
                         ],
                       )),
-                      Container(child: Column(
+                      Container(
+                          child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          buildInnerRow('Granular Fruits', checkboxVal4, (bool value){setState(() {
-                            checkboxVal4 = value;
-                          });} ),
+                          buildInnerRow('Granular Fruits', checkboxVal4,
+                              (bool value) {
+                            setState(() {
+                              checkboxVal4 = value;
+                            });
+                          }),
                           SizedBox(height: 16),
-                          buildInnerRow('Meats & Fish', checkboxVal5, (bool value){setState(() {
-                            checkboxVal5 = value;
-                          });}),
+                          buildInnerRow('Meats & Fish', checkboxVal5,
+                              (bool value) {
+                            setState(() {
+                              checkboxVal5 = value;
+                            });
+                          }),
                           SizedBox(height: 16),
-                          buildInnerRow('Organic Food',checkboxVal6, (bool value){setState(() {
-                            checkboxVal6 = value;
-                          });}),
+                          buildInnerRow('Organic Food', checkboxVal6,
+                              (bool value) {
+                            setState(() {
+                              checkboxVal6 = value;
+                            });
+                          }),
                           SizedBox(height: 16),
-                          buildInnerRow('Low-Carbs',checkboxVal7, (bool value){setState(() {
-                            checkboxVal7 = value;
-                          });}),
+                          buildInnerRow('Low-Carbs', checkboxVal7,
+                              (bool value) {
+                            setState(() {
+                              checkboxVal7 = value;
+                            });
+                          }),
                         ],
                       ))
                     ],
@@ -351,7 +376,6 @@ class _CategoriesGridState extends State<CategoriesGrid> {
     );
   }
 
-
   Row buildInnerRow(String text, bool checkboxVal, onchanged) {
     return Row(
       children: [
@@ -359,10 +383,7 @@ class _CategoriesGridState extends State<CategoriesGrid> {
           height: 24,
           width: 24,
           child: Checkbox(
-            activeColor: red,
-            value: checkboxVal,
-            onChanged: onchanged
-          ),
+              activeColor: red, value: checkboxVal, onChanged: onchanged),
         ),
         SizedBox(width: 16),
         stylus(text, FontWeight.w400, 16)

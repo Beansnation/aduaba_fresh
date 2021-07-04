@@ -1,4 +1,4 @@
-import 'package:aduaba_fresh/discover/discover.dart';
+import 'package:aduaba_fresh/screens/discover/discover.dart';
 import 'package:flutter/material.dart';
 import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -91,7 +91,6 @@ class _CheckoutConfirmedState extends State<CheckoutConfirmed> {
                   SizedBox(height: 16.0),
                   tab,
                   SizedBox(height: 16.0),
-
                 ],
               ),
             ),
@@ -104,7 +103,7 @@ class _CheckoutConfirmedState extends State<CheckoutConfirmed> {
               //SizedBox(height: MediaQuery.of(context).size.height/9),
               Spacer(),
               Image.asset('assets/images/cartConfirmed.png', scale: 3),
-              SizedBox(height: MediaQuery.of(context).size.height/12),
+              SizedBox(height: MediaQuery.of(context).size.height / 12),
               stylus('Order Confirmed', FontWeight.bold, 24,
                   alignment: TextAlign.center),
               SizedBox(height: 16),
@@ -112,11 +111,11 @@ class _CheckoutConfirmedState extends State<CheckoutConfirmed> {
                   'Thank you for choosing Aduaba Fresh. Your order #2345 has been confirmed',
                   FontWeight.w400,
                   20,
-              alignment: TextAlign.center),
+                  alignment: TextAlign.center),
               SizedBox(height: 36),
               actionButton('Track Order', primaryGreen, primaryGreen, white),
               SizedBox(height: 16),
-              actionButton('Continue Shopping', white, black, black, ontap: (){
+              actionButton('Continue Shopping', white, black, black, ontap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Discover()));
               })

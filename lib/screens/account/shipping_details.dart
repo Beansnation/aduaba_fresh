@@ -1,5 +1,3 @@
-import 'package:aduaba_fresh/cart/cart_screen.dart';
-import 'package:aduaba_fresh/checkout/checkout_payment.dart';
 import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../bottom_navbar.dart';
+import '../../widgets/bottom_navbar.dart';
 import 'package:flutter_svg/svg.dart';
 
 class PaymentPage extends StatefulWidget {
@@ -187,8 +187,10 @@ class _PaymentPageState extends State<PaymentPage> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     stylus(
-                                      //variables onchanged
-                                        'Aycan Doganlar', FontWeight.w500, 18,
+                                        //variables onchanged
+                                        'Aycan Doganlar',
+                                        FontWeight.w500,
+                                        18,
                                         textcolor: white),
                                     stylus('12/23', FontWeight.w600, 14,
                                         textcolor: white),

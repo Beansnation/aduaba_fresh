@@ -1,7 +1,7 @@
-import 'package:aduaba_fresh/discover/discover.dart';
+import 'package:aduaba_fresh/model/style_refactor.dart';
+import 'package:aduaba_fresh/screens/discover/discover.dart';
+import 'package:aduaba_fresh/widgets/bottom_navbar.dart';
 import 'package:flutter/material.dart';
-import '../bottom_navbar.dart';
-import '../model/style_refactor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class EmptyCart extends StatefulWidget {
@@ -10,7 +10,6 @@ class EmptyCart extends StatefulWidget {
 }
 
 class _EmptyCartState extends State<EmptyCart> {
-
   @override
   Widget build(BuildContext context) {
     final tab = Container(
@@ -118,7 +117,8 @@ class BottomFloat extends StatelessWidget {
           child: Column(
             children: [
               // SizedBox(height: 16),
-              actionButton('Start Ordering', primaryGreen, primaryGreen, white, ontap:(){
+              actionButton('Start Ordering', primaryGreen, primaryGreen, white,
+                  ontap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Discover()));
               }),

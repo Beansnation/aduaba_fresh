@@ -1,8 +1,7 @@
+import 'package:aduaba_fresh/screens/discover/discover.dart';
 import 'package:flutter/material.dart';
 import 'package:aduaba_fresh/model/style_refactor.dart';
-import 'discover/discover.dart';
-import 'home_screen.dart';
-
+import '../screens/home/home_screen.dart';
 
 class BottomNav extends StatefulWidget {
   @override
@@ -49,8 +48,7 @@ class _BottomNavState extends State<BottomNav> {
         ),
         buildNavBar(Icons.more_horiz, 2, padding: EdgeInsets.only(right: 80.0),
             ontap: () {
-          setState(() {
-          });
+          setState(() {});
         }),
       ]),
     );
