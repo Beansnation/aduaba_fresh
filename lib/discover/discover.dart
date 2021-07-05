@@ -4,7 +4,6 @@ import '../bottom_navbar.dart';
 import '../model/style_refactor.dart';
 import '../cart/cart_screen.dart';
 import 'search.dart';
-import '../home_screen.dart';
 import 'product_detail.dart';
 import 'package:aduaba_fresh/screens/drawer-menu.dart';
 
@@ -14,11 +13,13 @@ class Discover extends StatefulWidget {
 }
 
 class _DiscoverState extends State<Discover> {
+
   @override
   void initState() {
     index = 1;
     super.initState();
   }
+
   var scaffoldKey = GlobalKey<ScaffoldState>();
   Color favColor = white;
   Color favColor1 = white;
@@ -30,29 +31,65 @@ class _DiscoverState extends State<Discover> {
   @override
   Widget build(BuildContext context) {
     List<Widget> cards = [
-      buildCard(6,favColor, (){setState(() {
-        favColor = red;
-      });}),
-      buildCard(7,favColor3, (){setState(() {
-        favColor3 = red;
-      });}),
-      buildCard(8, favColor1,(){setState(() {
-        favColor1 = red;
-      });}),
-      buildCard(9,favColor2, (){setState(() {
-        favColor2 = red;
-      });}),
-      buildCard(3, favColor4,(){setState(() {
-        favColor4 = red;
-      });}),
-      buildCard(3, favColor5, (){setState(() {
-        favColor5 = red;
-      });}),
+      buildCard(6, favColor, () {
+        setState(() {
+          if (favColor == white) {
+            favColor = red;
+          } else{
+            favColor = white;
+          } 
+        });
+      }),
+      buildCard(7, favColor3, () {
+        setState(() {
+          if (favColor3 == white) {
+            favColor3 = red;
+          } else{
+            favColor3 = white;
+          } 
+        });
+      }),
+      buildCard(8, favColor1, () {
+        setState(() {
+          if (favColor1 == white) {
+            favColor1 = red;
+          } else{
+            favColor1 = white;
+          } 
+        });
+      }),
+      buildCard(9, favColor2, () {
+        setState(() {
+          if (favColor2 == white) {
+            favColor2 = red;
+          } else{
+            favColor2 = white;
+          } 
+        });
+      }),
+      buildCard(3, favColor4, () {
+        setState(() {
+         if (favColor4 == white) {
+            favColor4 = red;
+          } else{
+            favColor4 = white;
+          } 
+        });
+      }),
+      buildCard(3, favColor5, () {
+        setState(() {
+           if (favColor5 == white) {
+            favColor5 = red;
+          } else{
+            favColor5 = white;
+          } 
+        });
+      }),
     ];
     var size = MediaQuery.of(context).size;
 
     /*24 is for notification bar on Android*/
-    final double itemHeight = 348 ;
+    final double itemHeight = 349;
     final double itemWidth = size.width / 2;
     final tab = Container(
       padding: EdgeInsets.only(left: 5, right: 16, top: 16, bottom: 16),
@@ -200,7 +237,7 @@ class _DiscoverState extends State<Discover> {
       onTap: () => Navigator.push(
           context, MaterialPageRoute(builder: (context) => ProductDetail())),
       child: Container(
-          margin: EdgeInsets.only(right: 16.0),
+          margin: EdgeInsets.only(right: 13.0),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(4.0))),
           child: Stack(
@@ -233,7 +270,6 @@ class _DiscoverState extends State<Discover> {
                       SizedBox(height: 18),
                     ],
                   ),
-
                 ],
               ),
               Positioned(

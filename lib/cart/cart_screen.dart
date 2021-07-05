@@ -27,14 +27,12 @@ class _CartState extends State<Cart> {
               Icons.check,
               color: hintTextColor,
             ),
-            stylus('Select All', FontWeight.w500, 15,
-                textcolor: hintTextColor),
+            stylus('Select All', FontWeight.w500, 15, textcolor: hintTextColor),
           ],
         ),
         Row(
           children: [
-            Icon(FontAwesomeIcons.trashAlt,
-                size: 16, color: hintTextColor),
+            Icon(FontAwesomeIcons.trashAlt, size: 16, color: hintTextColor),
             stylus('Delete Selected', FontWeight.w500, 15,
                 textcolor: hintTextColor),
           ],
@@ -69,14 +67,12 @@ class _CartState extends State<Cart> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    stylus('Cart', FontWeight.w700, 24,
-                        textcolor: greenGrey),
+                    stylus('Cart', FontWeight.w700, 24, textcolor: greenGrey),
                   ],
                 ),
                 SizedBox(height: 16.0),
                 tab,
                 SizedBox(height: 16.0),
-
               ],
             ),
           ),
@@ -91,8 +87,7 @@ class _CartState extends State<Cart> {
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     children: [
-                      cartCard(
-                              (bool? value) {
+                      cartCard((bool? value) {
                         setState(() {
                           this._checkBoxVal = value!;
                         });
@@ -140,8 +135,7 @@ class _CartState extends State<Cart> {
                             top: MediaQuery.of(context).size.height * 6 / 11,
                             left: 0.0,
                             right: 0.0,
-                            child: BottomFloat()
-                        ),
+                            child: BottomFloat()),
                       ),
                     ],
                   ),
@@ -181,10 +175,13 @@ class BottomFloat extends StatelessWidget {
               ),
               SizedBox(height: 16),
               actionButton(
-                  'Proceed to Checkout', primaryGreen, primaryGreen, white, ontap: (){Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Checkout()));}),
+                  'Proceed to Checkout', primaryGreen, primaryGreen, white,
+                  ontap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Checkout()));
+              }),
               SizedBox(height: 16),
-              actionButton('Continue Shopping', white, black, black, ontap: (){
+              actionButton('Continue Shopping', white, black, black, ontap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Discover()));
               }),

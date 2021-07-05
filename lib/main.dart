@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         shadowColor: white,
         fontFamily: 'TTNorms pro',
       ),
-      home: Cart(),
+      home: Splash(),
     );
   }
 }
