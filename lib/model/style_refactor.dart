@@ -22,12 +22,15 @@ Color red = Colors.red;
 Color stepperColor = Color(0xFF999999);
 int index = 2;
 
- stylus(String text, FontWeight weight, double size,
-    {Color? textcolor, TextAlign? alignment, TextDecoration? decoration, double? letterspacing}) {
+stylus(String text, FontWeight weight, double size,
+    {Color? textcolor,
+    TextAlign? alignment,
+    TextDecoration? decoration,
+    double? letterspacing}) {
   return Text(text,
       textAlign: alignment,
       style: TextStyle(
-        decoration: decoration,
+          decoration: decoration,
           letterSpacing: letterspacing,
           fontWeight: weight,
           color: textcolor,
@@ -72,11 +75,13 @@ Widget textInput(
   int? num,
   onchanged,
   FocusNode? focusNode,
+  bool obscure: false,
   IconData? iconSuffix,
   icon,
 }) {
   return Expanded(
     child: TextFormField(
+        obscureText: obscure,
         onChanged: onchanged,
         //autofocus: true,
         focusNode: focusNode,
@@ -237,16 +242,14 @@ Container cartCard(onchanged, bool checkBoxVal, String headLine,
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-          SizedBox(
+        SizedBox(
             height: 26,
-            width:20,
-            child:
-           Checkbox(
+            width: 20,
+            child: Checkbox(
                 value: checkBoxVal,
                 activeColor: orange,
                 checkColor: hintTextColor,
                 onChanged: onchanged)),
-
         Container(
             margin: EdgeInsets.only(right: 16.0),
             child: Column(
@@ -350,6 +353,3 @@ Widget buildVerifyPin(
                   counterText: '',
                   hintStyle: TextStyle(color: Colors.black, fontSize: 20.0)))));
 }
-
-
-
