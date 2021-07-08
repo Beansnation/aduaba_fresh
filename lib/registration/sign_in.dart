@@ -53,7 +53,7 @@ class _SignInState extends State<SignIn> {
                 SizedBox(height: 16),
                 textInput('input your password', passwordController,
                     TextInputType.visiblePassword,
-                    obscure: true),
+                    obscure: true, iconSuffix: Icons.remove_red_eye_rounded),
                 SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -74,8 +74,7 @@ class _SignInState extends State<SignIn> {
                 SizedBox(height: 24),
                 actionButton('Login', primaryGreen, primaryGreen, white,
                     ontap: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Home()));
+                      login();
                 }),
                 SizedBox(height: 16),
                 Center(

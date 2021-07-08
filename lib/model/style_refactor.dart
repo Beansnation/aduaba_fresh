@@ -79,13 +79,14 @@ Widget textInput(
   IconData? iconSuffix,
   icon,
 }) {
+
   return Expanded(
     child: TextFormField(
-        obscureText: obscure,
         onChanged: onchanged,
         //autofocus: true,
         focusNode: focusNode,
         keyboardType: type,
+        obscureText: obscure,
         maxLength: num,
         controller: controller,
         decoration: InputDecoration(
