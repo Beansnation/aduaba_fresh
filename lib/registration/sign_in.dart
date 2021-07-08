@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:aduaba_fresh/registration/sign_in_forgot_password.dart';
 import 'package:aduaba_fresh/registration/sign_up.dart';
 import 'package:flutter/material.dart';
 import '../model/style_refactor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aduaba_fresh/home_screen.dart';
+import 'package:http/http.dart' as http;
 
 class SignIn extends StatefulWidget {
   @override
@@ -48,14 +51,19 @@ class _SignInState extends State<SignIn> {
                 stylus('Password', FontWeight.w700, 16),
                 SizedBox(height: 16),
                 textInput('input your password', passwordController,
-                    TextInputType.visiblePassword),
+
+                    TextInputType.visiblePassword, obscure: true),
                 SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     GestureDetector(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>ForgotPassword()));
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    ForgotPassword()));
                       },
                       child: stylus('Forgot Password?', FontWeight.w600, 16,
                           textcolor: greenGrey),
@@ -63,7 +71,11 @@ class _SignInState extends State<SignIn> {
                   ],
                 ),
                 SizedBox(height: 24),
-                actionButton('Login', primaryGreen, primaryGreen, white, ontap: (){Navigator.push(context, MaterialPageRoute(builder:(context)=>Home()));}),
+                actionButton('Login', primaryGreen, primaryGreen, white,
+                    ontap: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => Home()));
+                }),
                 SizedBox(height: 16),
                 Center(
                     child: stylus(
@@ -122,5 +134,31 @@ class _SignInState extends State<SignIn> {
         ),
       ),
     );
+  }
+
+  //FUNCTION TO CALL LOGIN API
+  Future<void> login() async {
+    if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+      var response = await http.post(
+          Uri.parse(
+              "https://aduabawebapi.azurewebsites.net/api/User/UserLogin"),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: jsonEncode(<String, String>{
+            'email': emailController.text,
+            'password': passwordController.text
+          }));
+      if (response.statusCode == 200) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Home()));
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('Invalid Credentials')));
+      }
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Blank field not allowed')));
+    }
   }
 }

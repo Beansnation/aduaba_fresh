@@ -65,9 +65,12 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               alignment: TextAlign.center),
                           SizedBox(height: 28),
                           actionButton(
-                              'Sign in', primaryGreen, primaryGreen, white, ontap: (){
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => SignIn()));
+                              'Sign in', primaryGreen, primaryGreen, white,
+                              ontap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignIn()));
                           }),
                         ],
                       ));
@@ -261,7 +264,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             ),
                           ),
                         );
-                      });
+                      }); //showModalBottomSheet
                 },
                 child:
                     actionButton('Continue', primaryGreen, primaryGreen, white))
