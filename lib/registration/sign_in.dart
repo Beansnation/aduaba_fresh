@@ -48,7 +48,7 @@ class _SignInState extends State<SignIn> {
                 stylus('Password', FontWeight.w700, 16),
                 SizedBox(height: 16),
                 textInput('input your password', passwordController,
-                    TextInputType.visiblePassword),
+                    TextInputType.visiblePassword, obscure: true),
                 SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
