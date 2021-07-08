@@ -80,7 +80,7 @@ class _WishlistPageState extends State<WishlistPage> {
       child: Row(
         children: [
           Image.asset('assets/images/Berry Powder.png', scale:.85),
-          SizedBox(width: 16),
+          SizedBox(width: MediaQuery.of(context).size.width*0.042),
           Container(
               width: 230,
               child: Column(
@@ -110,7 +110,7 @@ class _WishlistPageState extends State<WishlistPage> {
                   )
                 ],
               )),
-          SizedBox(width: 16),
+          SizedBox(width: MediaQuery.of(context).size.width*0.011),
           Icon(
             FontAwesomeIcons.trashAlt,
             size: 18.0,

@@ -209,7 +209,7 @@ class _DiscoverState extends State<Discover> {
         drawer: Drawer(child: DrawerMenu()),
         appBar: PreferredSize(
             preferredSize:
-                Size.fromHeight(MediaQuery.of(context).size.width / 2.9),
+                Size.fromHeight(MediaQuery.of(context).size.height *0.14),
             child: tab),
         bottomNavigationBar: BottomNav(),
         body: ListView(
