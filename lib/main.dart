@@ -24,9 +24,7 @@ import 'package:aduaba_fresh/screens/payment_page.dart';
 import 'package:aduaba_fresh/screens/raw_food_category_page.dart';
 import 'package:aduaba_fresh/screens/wishlist_page.dart';
 
-
-void main()=> runApp(MyApp());
-
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -40,8 +38,7 @@ class MyApp extends StatelessWidget {
         shadowColor: white,
         fontFamily: 'TTNorms pro',
       ),
-      home: Splash(),
+      home: SignIn(),
     );
   }
 }
-

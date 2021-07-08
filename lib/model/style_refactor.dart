@@ -68,13 +68,18 @@ Widget ctaButton(String text, Color backgroundColor, IconData icon,
 }
 
 //text fields
-Widget textInput(String hintText, controller, TextInputType type,
-    {int? num,
-    onchanged,
-    FocusNode? focusNode,
-    IconData? iconSuffix,
-    icon,
-    bool obscure: false}) {
+Widget textInput(
+  String hintText,
+  controller,
+  TextInputType type, {
+  int? num,
+  onchanged,
+  FocusNode? focusNode,
+  bool obscure: false,
+  IconData? iconSuffix,
+  icon,
+}) {
+
   return Expanded(
     child: TextFormField(
         onChanged: onchanged,
