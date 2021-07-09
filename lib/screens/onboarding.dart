@@ -40,12 +40,12 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               [
                 'assets/images/OnBoarding1.png',
                 'Explore Fresh Organic\nProducts Everyday',
-                'Search through a variety of products that help you keep\n fit and healthy'
+                'Search through a variety of products that help you keep fit and healthy'
               ],
               [
                 'assets/images/OnBoarding2.png',
                 'Eat Healthy, Spend Wisely.\nBe Happy',
-                'Discover products by our vendors at very affordable\n prices',
+                'Discover fresh and green products by our vendors at very affordable prices',
               ],
               [
                 'assets/images/OnBoarding3.png',
@@ -77,7 +77,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
-                                      width:48,
+                                      width: 48,
                                       child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,

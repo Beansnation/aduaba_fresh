@@ -78,8 +78,8 @@ Widget textInput(
   bool obscure: false,
   IconData? iconSuffix,
   icon,
+  onpressed,
 }) {
-
   return Expanded(
     child: TextFormField(
         onChanged: onchanged,
@@ -90,10 +90,13 @@ Widget textInput(
         maxLength: num,
         controller: controller,
         decoration: InputDecoration(
-            suffixIcon: Icon(
-              iconSuffix,
-              size: 24,
-              color: hintTextColor,
+            suffixIcon: IconButton(
+              onPressed: onpressed,
+              icon: Icon(
+                iconSuffix,
+                size: 24,
+                color: hintTextColor,
+              ),
             ),
             prefixIcon: icon,
             hintText: hintText,
