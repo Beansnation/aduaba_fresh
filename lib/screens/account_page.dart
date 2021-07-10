@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 
 import 'edit_account.dart';
 import 'orders_page.dart';
+import 'package:aduaba_fresh/registration/sign_up.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
@@ -73,9 +74,10 @@ class _AccountPageState extends State<AccountPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        stylus('Andrea Charles', FontWeight.bold, 18),
+                        stylus('$userFirstName $userLastName', FontWeight.bold,
+                            18),
                         SizedBox(height: 8.0),
-                        Text('Andrea_charles@gmail.com'),
+                        Text('$userEmail'),
                         SizedBox(height: 8.0),
                         Text('+234 809 202 3024'),
                       ],
@@ -123,8 +125,10 @@ class _AccountPageState extends State<AccountPage> {
               Divider(),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ShippingDetails()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ShippingDetails()));
                 },
                 child: accountOptions(
                     Icons.electric_rickshaw, Colors.amber, 'Shipping details'),

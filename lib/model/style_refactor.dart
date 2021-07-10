@@ -76,6 +76,7 @@ Widget textInput(
   onchanged,
   FocusNode? focusNode,
   bool obscure: false,
+  validate,
   IconData? iconSuffix,
   icon,
   onpressed,
@@ -83,6 +84,7 @@ Widget textInput(
   return Expanded(
     child: TextFormField(
         onChanged: onchanged,
+        validator: validate,
         //autofocus: true,
         focusNode: focusNode,
         keyboardType: type,

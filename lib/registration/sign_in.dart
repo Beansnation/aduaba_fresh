@@ -52,17 +52,24 @@ class _SignInState extends State<SignIn> {
                 SizedBox(height: 16),
                 stylus('Password', FontWeight.w700, 16),
                 SizedBox(height: 16),
-                textInput('input your password', passwordController,
-                    TextInputType.visiblePassword, obscure: showPassword,
-                    onpressed: () {
-                  setState(() {
-                    if(showPassword == false){
-                      showPassword = true;
-                    }else{
-                      showPassword = false;
-                    }
-                  });
-                }, iconSuffix: Icons.remove_red_eye_rounded),
+                textInput(
+                  'input your password',
+                  passwordController,
+                  TextInputType.visiblePassword,
+                  obscure: showPassword,
+                  onpressed: () {
+                    setState(() {
+                      if (showPassword == false) {
+                        showPassword = true;
+                      } else {
+                        showPassword = false;
+                      }
+                    });
+                  },
+                  iconSuffix: showPassword == false
+                      ? Icons.visibility
+                      : Icons.visibility_off,
+                ),
                 SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
