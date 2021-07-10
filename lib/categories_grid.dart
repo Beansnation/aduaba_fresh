@@ -157,10 +157,28 @@ class _CategoriesGridState extends State<CategoriesGrid> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                    color: grey,
-                    child:
-                        Image.asset('assets/images/image$num.png', scale: 3.4)),
+                Stack(
+                  children: [
+                    Container(
+                        color: grey,
+                        child: Image.asset('assets/images/image$num.png',
+                            scale: 3.4)),
+                    Positioned(
+                      top: 8,
+                      left: 0.0,
+                      right: 8.0,
+                      child: Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Image.asset('assets/images/image$num.png',
+                                  scale: 24)
+                            ],
+                          )),
+                    ),
+                  ],
+                ),
                 SizedBox(height: 8.0),
                 stylus('Emmanuel Produce', FontWeight.w500, 12,
                     textcolor: greenGrey),
@@ -182,19 +200,6 @@ class _CategoriesGridState extends State<CategoriesGrid> {
                   ],
                 )
               ],
-            ),
-            Positioned(
-              top: 8,
-              left: 0.0,
-              right: 8.0,
-              child: Padding(
-                  padding: EdgeInsets.all(5.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Image.asset('assets/images/image$num.png', scale: 24)
-                    ],
-                  )),
             ),
           ],
         ));

@@ -5,6 +5,7 @@ import 'cart/cart_screen.dart';
 import 'screens/drawer-menu.dart';
 import 'screens/categories_page.dart';
 import 'discover/discover.dart';
+import 'package:aduaba_fresh/registration/sign_up.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -12,18 +13,16 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   @override
   void initState() {
     index = 0;
     super.initState();
   }
-  TextEditingController searchController = TextEditingController();
 
+  TextEditingController searchController = TextEditingController();
   var scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         key: scaffoldKey,
         drawer: Drawer(child: DrawerMenu()),
@@ -67,7 +66,8 @@ class _HomeState extends State<Home> {
           child: ListView(
             padding: const EdgeInsets.all(16.0),
             children: [
-              stylus('Hi, Andrea', FontWeight.w500, 18, textcolor: greenGrey),
+              stylus('Hi, $userFirstName', FontWeight.w500, 18,
+                  textcolor: greenGrey),
               SizedBox(height: 8),
               stylus('What are you looking for today?', FontWeight.w700, 26,
                   textcolor: greenGrey),

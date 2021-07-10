@@ -1,4 +1,5 @@
 import 'package:aduaba_fresh/model/style_refactor.dart';
+import 'package:aduaba_fresh/registration/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:aduaba_fresh/discover/discover.dart';
 import 'package:aduaba_fresh/splash_screen.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
         shadowColor: white,
         fontFamily: 'TTNorms pro',
       ),
-      home: SignIn(),
+      home: SignUp(),
     );
   }
 }

@@ -5,6 +5,7 @@ import 'package:aduaba_fresh/model/style_refactor.dart';
 import 'account_page.dart';
 import 'categories_page.dart';
 import 'orders_page.dart';
+import 'package:aduaba_fresh/registration/sign_up.dart';
 
 class DrawerMenu extends StatefulWidget {
   @override
@@ -28,15 +29,15 @@ class _DrawerMenuState extends State<DrawerMenu> {
                       child: Row(
                         children: <Widget>[
                           CircleAvatar(
-                            backgroundImage: AssetImage(
-                                'assets/images/Profile.jpeg'),
+                            backgroundImage:
+                                AssetImage('assets/images/Profile.jpeg'),
                             radius: 18.0,
                           ),
                           SizedBox(
                             width: 20.0,
                           ),
                           stylus(
-                            'Andrea Charles',
+                            '$userFirstName $userLastName',
                             FontWeight.bold,
                             18.0,
                           ),

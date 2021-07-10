@@ -17,6 +17,8 @@ class _SignInState extends State<SignIn> {
   final _key = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  bool showPassword = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,9 +52,24 @@ class _SignInState extends State<SignIn> {
                 SizedBox(height: 16),
                 stylus('Password', FontWeight.w700, 16),
                 SizedBox(height: 16),
-                textInput('input your password', passwordController,
-
-                    TextInputType.visiblePassword, obscure: true),
+                textInput(
+                  'input your password',
+                  passwordController,
+                  TextInputType.visiblePassword,
+                  obscure: showPassword,
+                  onpressed: () {
+                    setState(() {
+                      if (showPassword == false) {
+                        showPassword = true;
+                      } else {
+                        showPassword = false;
+                      }
+                    });
+                  },
+                  iconSuffix: showPassword == false
+                      ? Icons.visibility
+                      : Icons.visibility_off,
+                ),
                 SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -73,8 +90,7 @@ class _SignInState extends State<SignIn> {
                 SizedBox(height: 24),
                 actionButton('Login', primaryGreen, primaryGreen, white,
                     ontap: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Home()));
+                  login();
                 }),
                 SizedBox(height: 16),
                 Center(

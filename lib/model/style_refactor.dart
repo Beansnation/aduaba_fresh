@@ -76,13 +76,15 @@ Widget textInput(
   onchanged,
   FocusNode? focusNode,
   bool obscure: false,
+  validate,
   IconData? iconSuffix,
   icon,
+  onpressed,
 }) {
-
   return Expanded(
     child: TextFormField(
         onChanged: onchanged,
+        validator: validate,
         //autofocus: true,
         focusNode: focusNode,
         keyboardType: type,
@@ -90,10 +92,13 @@ Widget textInput(
         maxLength: num,
         controller: controller,
         decoration: InputDecoration(
-            suffixIcon: Icon(
-              iconSuffix,
-              size: 24,
-              color: hintTextColor,
+            suffixIcon: IconButton(
+              onPressed: onpressed,
+              icon: Icon(
+                iconSuffix,
+                size: 24,
+                color: hintTextColor,
+              ),
             ),
             prefixIcon: icon,
             hintText: hintText,

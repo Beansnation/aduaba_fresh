@@ -45,7 +45,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               [
                 'assets/images/OnBoarding2.png',
                 'Eat Healthy, Spend Wisely.\nBe Happy',
-                'Discover products by our vendors at very affordable prices',
+                'Discover fresh and green products by our vendors at very affordable prices',
               ],
               [
                 'assets/images/OnBoarding3.png',
@@ -77,7 +77,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
-                                      width:48,
+                                      width: 48,
                                       child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
