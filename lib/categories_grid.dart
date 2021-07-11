@@ -4,11 +4,17 @@ import 'cart/cart_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CategoriesGrid extends StatefulWidget {
+  String? appBarTitle;
+  CategoriesGrid(this.appBarTitle);
+
   @override
-  _CategoriesGridState createState() => _CategoriesGridState();
+  _CategoriesGridState createState() => _CategoriesGridState(this.appBarTitle);
 }
 
 class _CategoriesGridState extends State<CategoriesGrid> {
+  String? appBarTitle;
+  _CategoriesGridState(this.appBarTitle);
+
   TextEditingController searchController = TextEditingController();
   TextEditingController startController = TextEditingController();
   TextEditingController endController = TextEditingController();
@@ -115,7 +121,7 @@ class _CategoriesGridState extends State<CategoriesGrid> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      stylus('Raw Food', FontWeight.w700, 24,
+                      stylus(appBarTitle!, FontWeight.w700, 24,
                           textcolor: greenGrey),
                     ],
                   ),

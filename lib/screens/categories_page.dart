@@ -1,23 +1,48 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
+
 import 'package:aduaba_fresh/model/style_refactor.dart';
-import 'package:aduaba_fresh/cart/cart_screen.dart';
-import '../bottom_navbar.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
 import '../categories_grid.dart';
 
-
-
-
 class CategoriesPage extends StatefulWidget {
-
   @override
   _CategoriesPageState createState() => _CategoriesPageState();
 }
 
 class _CategoriesPageState extends State<CategoriesPage> {
+  List categories = [];
+  bool isLoading = false;
+
   @override
   void initState() {
-    index = 0;
     super.initState();
+    fetchCategories();
+  }
+
+  fetchCategories() async {
+    setState(() {
+      isLoading = true;
+    });
+    var response = await http.get(
+      Uri.parse(
+          "https://aduabawebapi.azurewebsites.net/api/Category/GetCategories"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Charset': 'utf-8'
+      },
+    );
+    if (response.statusCode == 200) {
+      var categoryItems = json.decode(response.body);
+      setState(() {
+        categories = categoryItems;
+        isLoading = false;
+      });
+    } else {
+      categories = [];
+      isLoading = false;
+    }
   }
 
   @override
@@ -57,8 +82,8 @@ class _CategoriesPageState extends State<CategoriesPage> {
                             size: 30),
                         color: white,
                         onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Cart()));
+                          // Navigator.push(context,
+                          //     MaterialPageRoute(builder: (context) => Cart()));
                         },
                       ),
                     )
@@ -67,7 +92,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                 SizedBox(
                   height: 16.0,
                 ),
-                Text('23 Categories'),
+                Text('${categories.length} Categories'),
                 SizedBox(
                   height: 12.0,
                 ),
@@ -76,22 +101,27 @@ class _CategoriesPageState extends State<CategoriesPage> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNav(),
+      //bottomNavigationBar: BottomNav(),
       body: getCategoriesListCard(),
     );
   }
 
   Widget getCategoriesListCard() {
-    List items = ['1', '2', '3', '4', '5', '6'];
+    if (categories.contains(null) || categories.length < 0 || isLoading) {
+      return Center(child: CircularProgressIndicator());
+    }
     return ListView.builder(
-      itemCount: items.length,
+      itemCount: categories.length,
       itemBuilder: (context, index) {
-        return categoriesListCard();
+        return categoriesListCard(categories[index]);
       },
     );
   }
 
-  Widget categoriesListCard() {
+  Widget categoriesListCard(item) {
+    var categoryName = item['categoryName'];
+    var categoryId = item['categoryId'];
+    var categoryImage = item['categoryImage'];
     return Container(
       color: Colors.white,
       child: Card(
@@ -104,8 +134,8 @@ class _CategoriesPageState extends State<CategoriesPage> {
               borderRadius: BorderRadius.circular(12),
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage(
-                  'assets/images/RawFruits.png',
+                image: NetworkImage(
+                  categoryImage.toString(),
                 ),
               ),
             ),
@@ -114,7 +144,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Raw Fruits',
+                categoryName.toString(),
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w600,
@@ -136,12 +166,16 @@ class _CategoriesPageState extends State<CategoriesPage> {
             size: 35.0,
             color: Colors.grey[400],
           ),
-          onTap: (){
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => CategoriesGrid()));
+          onTap: () {
+            navigateToGridPage(categoryName);
           },
         ),
       ),
     );
+  }
+
+  void navigateToGridPage(String gridTitle) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => CategoriesGrid(gridTitle)));
   }
 }
