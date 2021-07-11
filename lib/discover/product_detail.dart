@@ -3,11 +3,22 @@ import '../model/style_refactor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProductDetail extends StatefulWidget {
+  var imgPath, productTitle, manufacturer, productDetails, productAmount;
+  ProductDetail(this.imgPath, this.productTitle, this.manufacturer,
+      this.productDetails, this.productAmount);
   @override
-  _ProductDetailState createState() => _ProductDetailState();
+  _ProductDetailState createState() => _ProductDetailState(
+      this.imgPath,
+      this.productTitle,
+      this.manufacturer,
+      this.productDetails,
+      this.productAmount);
 }
 
 class _ProductDetailState extends State<ProductDetail> {
+  var imgPath, productTitle, manufacturer, productDetails, productAmount;
+  _ProductDetailState(this.imgPath, this.productTitle, this.manufacturer,
+      this.productDetails, this.productAmount);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +26,7 @@ class _ProductDetailState extends State<ProductDetail> {
         children: [
           ListView(
             children: [
-              Image.asset('assets/images/search3.png', scale: .1),
+              Image.network(imgPath.toString(), scale: .1),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Column(
@@ -24,12 +35,10 @@ class _ProductDetailState extends State<ProductDetail> {
                       minVerticalPadding: 24,
                       horizontalTitleGap: 100,
                       contentPadding: EdgeInsets.zero,
-                      title: stylus(
-                          'Herbsconnect Organic Acai Berry Powder Freeze Dried',
-                          FontWeight.bold,
-                          24),
+                      title:
+                          stylus(productTitle.toString(), FontWeight.bold, 24),
                       subtitle: stylus(
-                          'Emmanuel produce', FontWeight.normal, 16,
+                          manufacturer.toString(), FontWeight.normal, 16,
                           textcolor: greenGrey),
                       trailing: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -39,10 +48,7 @@ class _ProductDetailState extends State<ProductDetail> {
                     SizedBox(
                       height: 24,
                     ),
-                    stylus(
-                        'Lal Qilla Diabetes and Obesity Basmati Rice 5kg. Using a unique technique during cultivation and processing, Lal Qilla has introduced a specially processed low G.I. parboiled rice. This remarkable rice helps rice lovers with diabetes to ',
-                        FontWeight.normal,
-                        16),
+                    stylus(productDetails.toString(), FontWeight.normal, 16),
                     SizedBox(
                       height: 24,
                     ),
@@ -63,7 +69,8 @@ class _ProductDetailState extends State<ProductDetail> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          stylus('N35,000.00', FontWeight.w700, 16),
+                          stylus('N${productAmount.toString()}',
+                              FontWeight.w700, 16),
                           actionButton(
                               'Add to cart', primaryGreen, primaryGreen, white),
                         ],
@@ -83,9 +90,10 @@ class _ProductDetailState extends State<ProductDetail> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    GestureDetector(child: Icon(Icons.keyboard_backspace, color: white, size: 35),
-                    onTap: ()=>Navigator.pop(context)
-                    )
+                    GestureDetector(
+                        child: Icon(Icons.keyboard_backspace,
+                            color: white, size: 35),
+                        onTap: () => Navigator.pop(context))
                   ],
                 )),
           ),
