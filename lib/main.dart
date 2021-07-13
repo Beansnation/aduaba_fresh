@@ -12,6 +12,7 @@ import 'package:aduaba_fresh/registration/sign_in.dart';
 import 'checkout/checkout_card.dart';
 import 'checkout/checkout_confirmed.dart';
 import 'checkout/checkout_payment.dart';
+import 'discover/product_detail.dart';
 import 'home_screen.dart';
 import 'package:aduaba_fresh/screens/account_page.dart';
 import 'package:aduaba_fresh/screens/categories_page.dart';

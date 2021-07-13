@@ -13,6 +13,10 @@ class DrawerMenu extends StatefulWidget {
 }
 
 class _DrawerMenuState extends State<DrawerMenu> {
+  String? a, b, c, d, g;
+  bool? e;
+  int? f;
+
   @override
   Widget build(BuildContext context) {
     return Stack(clipBehavior: Clip.none, children: [
@@ -47,8 +51,10 @@ class _DrawerMenuState extends State<DrawerMenu> {
                   ),
                   buildListTile(Icons.shopping_cart, 'Cart', () {
                     Navigator.pop(context);
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Cart()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Cart(a, b, c, d, e, f!, g!)));
                   }),
                   buildListTile(Icons.grid_view_rounded, 'Categories', () {
                     Navigator.pop(context);

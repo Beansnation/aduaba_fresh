@@ -21,6 +21,11 @@ class _HomeState extends State<Home> {
 
   TextEditingController searchController = TextEditingController();
   var scaffoldKey = GlobalKey<ScaffoldState>();
+
+  String? a, b, c, d, g;
+  bool? e;
+  int? f;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,8 +59,11 @@ class _HomeState extends State<Home> {
                         size: 30),
                     color: white,
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Cart()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  Cart(a, b, c, d, e, f!, g!)));
                     },
                   ),
                 ))

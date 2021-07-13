@@ -74,6 +74,7 @@ Widget textInput(
   TextInputType type, {
   int? num,
   onchanged,
+  enabled,
   FocusNode? focusNode,
   bool obscure: false,
   validate,
@@ -83,6 +84,7 @@ Widget textInput(
 }) {
   return Expanded(
     child: TextFormField(
+        enabled: enabled,
         onChanged: onchanged,
         validator: validate,
         //autofocus: true,
@@ -239,100 +241,6 @@ Container bestSellingCard(int num) {
           )
         ],
       ));
-}
-
-Container cartCard(onchanged, bool checkBoxVal, String headLine,
-    String merchant, String price, String imagePath) {
-  return Container(
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        SizedBox(
-            height: 26,
-            width: 20,
-            child: Checkbox(
-                value: checkBoxVal,
-                activeColor: orange,
-                checkColor: hintTextColor,
-                onChanged: onchanged)),
-        Container(
-            margin: EdgeInsets.only(right: 16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // SizedBox(height:12),
-                stylus(
-                  headLine,
-                  FontWeight.w700,
-                  18,
-                ),
-                SizedBox(height: 4),
-                stylus(merchant, FontWeight.w500, 12, textcolor: greenGrey),
-                SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    stylus(price, FontWeight.w700, 16, textcolor: orange),
-                    SizedBox(width: 16),
-                    stylus('In stock', FontWeight.w600, 16,
-                        textcolor: darkGreen)
-                  ],
-                ),
-                SizedBox(
-                  height: 16,
-                ),
-                Row(
-                  children: [
-                    Container(
-                        height: 34,
-                        width: 36,
-                        decoration: BoxDecoration(
-                            color: grey,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(8),
-                                bottomLeft: Radius.circular(2))),
-                        child:
-                            Icon(Icons.remove, color: hintTextColor, size: 20)),
-                    Container(
-                        height: 34,
-                        width: 36,
-                        decoration: BoxDecoration(
-                          color: grey,
-                        ),
-                        child: Center(
-                            child: stylus('1', FontWeight.w500, 18,
-                                textcolor: hintTextColor))),
-                    Container(
-                        height: 34,
-                        width: 36,
-                        decoration: BoxDecoration(
-                            color: grey,
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(2),
-                                bottomRight: Radius.circular(2))),
-                        child: Icon(Icons.add, color: hintTextColor, size: 20)),
-                    SizedBox(width: 16),
-                    Container(
-                        height: 34,
-                        width: 36,
-                        decoration: BoxDecoration(
-                            color: grey,
-                            borderRadius: BorderRadius.all(Radius.circular(2))),
-                        child: Icon(FontAwesomeIcons.trashAlt,
-                            color: hintTextColor, size: 16))
-                  ],
-                )
-              ],
-            )),
-        Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(2))),
-            child: Image.asset(imagePath, scale: 4.5))
-      ],
-    ),
-  );
 }
 
 Widget buildVerifyPin(

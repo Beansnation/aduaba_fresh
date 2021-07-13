@@ -1,24 +1,101 @@
+import 'dart:convert';
+
+import 'package:aduaba_fresh/cart/cart_screen.dart';
 import 'package:flutter/material.dart';
 import '../model/style_refactor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:aduaba_fresh/discover/discover.dart';
+import 'package:http/http.dart' as http;
+
+int? quant;
 
 class ProductDetail extends StatefulWidget {
-  var imgPath, productTitle, manufacturer, productDetails, productAmount;
-  ProductDetail(this.imgPath, this.productTitle, this.manufacturer,
-      this.productDetails, this.productAmount);
+  var imgPath,
+      productTitle,
+      manufacturer,
+      productDetails,
+      productAmount,
+      availability,
+      productId;
+  ProductDetail(
+      this.imgPath,
+      this.productTitle,
+      this.manufacturer,
+      this.productDetails,
+      this.productAmount,
+      this.availability,
+      this.productId);
   @override
   _ProductDetailState createState() => _ProductDetailState(
       this.imgPath,
       this.productTitle,
       this.manufacturer,
       this.productDetails,
-      this.productAmount);
+      this.productAmount,
+      this.availability,
+      this.productId);
 }
 
 class _ProductDetailState extends State<ProductDetail> {
-  var imgPath, productTitle, manufacturer, productDetails, productAmount;
-  _ProductDetailState(this.imgPath, this.productTitle, this.manufacturer,
-      this.productDetails, this.productAmount);
+  var quantity;
+  var imgPath,
+      productTitle,
+      manufacturer,
+      productDetails,
+      productAmount,
+      availability,
+      productId;
+  _ProductDetailState(
+      this.imgPath,
+      this.productTitle,
+      this.manufacturer,
+      this.productDetails,
+      this.productAmount,
+      this.availability,
+      this.productId);
+
+  List allProducts = [];
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    index = 1;
+    super.initState();
+    fetchAllProducts();
+  }
+
+  fetchAllProducts() async {
+    setState(() {
+      isLoading = true;
+    });
+    var response = await http.get(
+      Uri.parse(
+          "https://aduabawebapi.azurewebsites.net/api/Product/GetAllProducts"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Charset': 'utf-8'
+      },
+    );
+    if (response.statusCode == 200) {
+      var allProductItems = json.decode(response.body);
+      setState(() {
+        allProducts = allProductItems;
+        isLoading = false;
+      });
+    } else {
+      allProducts = [];
+      isLoading = false;
+    }
+  }
+
+  var manufactureName = ['manufactureName'];
+  var productName = ['productName'];
+  var productPrice = ['productAmount'];
+  bool productAvailabilty = ['productAvailabilty'] as bool;
+  var productImageUrlPath = ['productImageUrlPath'];
+  var productDescription = ['productDescription'];
+  var idProduct = ['productId'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +149,19 @@ class _ProductDetailState extends State<ProductDetail> {
                           stylus('N${productAmount.toString()}',
                               FontWeight.w700, 16),
                           actionButton(
-                              'Add to cart', primaryGreen, primaryGreen, white),
+                              'Add to cart', primaryGreen, primaryGreen, white,
+                              ontap: () {
+                            setState(() {
+                              navigateToCartPage(
+                                  productImageUrlPath,
+                                  productName,
+                                  manufactureName,
+                                  productDescription,
+                                  productAmount,
+                                  productAvailabilty,
+                                  productId);
+                            });
+                          }),
                         ],
                       ),
                     ),
@@ -99,6 +188,35 @@ class _ProductDetailState extends State<ProductDetail> {
           ),
         ],
       ),
+    );
+  }
+
+  void navigateToCartPage(var imgPath, productTitle, manufacturer,
+      productDetails, productAmount, productAvailability, productId) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Cart(
+                imgPath,
+                productTitle,
+                manufacturer,
+                productDetails,
+                productAmount,
+                productAvailability,
+                productId)));
+  }
+}
+
+class AddToCart {
+  final String productId;
+  final int quantity;
+
+  AddToCart({required this.productId, required this.quantity});
+
+  factory AddToCart.fromJson(Map<String, dynamic> json) {
+    return AddToCart(
+      productId: json['productId'],
+      quantity: json['quantity'],
     );
   }
 }
